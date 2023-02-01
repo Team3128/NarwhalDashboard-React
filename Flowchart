@@ -1,0 +1,22 @@
+Going from big to small:
+
+1. Index.js
+    - Responsible for rendering the overall robot page and ultimately "App"
+    - Index.css: styling for the index page (not really needed)
+
+2. App.js
+    - Includes Nav Bar for all TABS + Enable/Disable Button
+    - Loads all the COMPONENTS that are avaliable for use
+
+3. TABS:
+    - Home (Main Tab for Driveteam) -> App.js
+    - Debug (Constants) -> /Tabs/debug.js
+    - Log File (TEXTFILE FOR CHARGED UP SEASON) -> /Tabs/log.js
+    - Field (Live view of Robot on Field) -> /Tabs/field.js
+
+4. CURRENT COMPONENTS (2022-2023: CHARGED UP):
+    - Clock/Timer (/Components/timer.js)
+    - Scoring Grid (/Components/grid.js)
+    - Auto Chooser (/Components/auto.js)
+
+
