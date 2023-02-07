@@ -2,15 +2,12 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import DashboardBase from './DashboardBase';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <DashboardBase leftWidth = {50} middleWidth = {25} rightWidth = {25}  />
   </React.StrictMode>
 );
-
-reportWebVitals();
