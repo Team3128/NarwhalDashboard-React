@@ -12,7 +12,6 @@ import Auto from './Components/auto.js';
 //leftWidth: Width of left component (% of screen) (0-100)
 //middleWidth: Width of middle component (% of screen) (0-100)
 //rightWidth: Width of right component (% of screen) (0-100)
-//hasMiddle: If true, middle component is displayed
 
 function DashboardBase({
   left,
@@ -44,9 +43,9 @@ function DashboardBase({
             {middle}
         </div>
 
-            <div>
-                {right}
-            </div>
+        <div>
+            {right}
+        </div>
     </div>
   );
 }
