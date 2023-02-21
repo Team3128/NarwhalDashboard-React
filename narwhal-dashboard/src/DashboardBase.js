@@ -2,7 +2,7 @@ import React from 'react'
 import './css/BasicLayoutStyles.css';
 
 import Timer from './Components/timer.js';
-import Grid from './Components/grid.js';
+import Grid from './Components/Grid.js';
 import Auto from './Components/auto.js';
 
 //Props:

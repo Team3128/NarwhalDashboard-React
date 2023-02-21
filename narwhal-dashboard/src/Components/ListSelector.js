@@ -47,8 +47,8 @@ function ListSelector(props) {
         }}>
             <div
             onClick={() => {
-                props.onSelectItem(null);
                 setSelectedItem(null);
+                props.onSelectItem(null);
             }}
             className="button sapphire auto_choice_none"
             >
@@ -59,8 +59,8 @@ function ListSelector(props) {
             return (
                 <div
                 onClick={() => {
-                    props.onSelectItem(item);
                     setSelectedItem(item);
+                    props.onSelectItem(item);
                 }}
                 className="button sapphire auto_choice"
                 >
