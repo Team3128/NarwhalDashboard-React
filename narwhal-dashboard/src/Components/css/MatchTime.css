@@ -1,0 +1,19 @@
+/* Convert the SCSS above to CSS */
+
+@keyframes blink {
+  0% {
+    outline-style: solid;
+  }
+  100% {
+    outline-style: none;
+  }
+}
+
+.blinking {
+  border-radius: 6px;
+  outline-style: solid;
+  outline-width: 7px;
+  outline-color: red;
+  outline-offset: -7px;
+  animation: blink 1s linear infinite;
+}

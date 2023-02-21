@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import DashboardBase from './DashboardBase';
-import Battery from './Components/Battery';
+import Battery from './Components/BatteryMatchTime';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

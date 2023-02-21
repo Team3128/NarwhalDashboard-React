@@ -1,5 +1,5 @@
 import React from 'react'
-import './BasicLayoutStyles.css';
+import './css/BasicLayoutStyles.css';
 
 import Timer from './Components/timer.js';
 import Grid from './Components/grid.js';

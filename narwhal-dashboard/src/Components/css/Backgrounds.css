@@ -1,0 +1,64 @@
+.white-black {
+    background: white;
+    color: black;
+    border: 3px solid black;
+}
+.navy {
+    background: $navy;
+    color: white;
+}
+.royal {
+    background: $royal;
+    color: white;
+}
+.sapphire {
+    background: $sapphire;
+    color: white;
+}
+.pacific {
+    background: $pacific;
+    color: white;
+}
+.red {
+    background: $red;
+    color: white;
+
+    &.deselected{
+        background: darken($red,       $darken-amount);
+        color: darken(white,       $darken-amount);
+    }
+}
+.orange {
+    background: $orange;
+    color: white;
+}
+.gold {
+    background: gold;
+    color: white;
+
+    &.deselected{
+        background: darken(gold,       $darken-amount);
+        color: darken(white,       $darken-amount);
+    }
+}
+.green {
+    background: $green;
+    color: white;
+
+    &.deselected{
+        background: darken($green,       $darken-amount);
+        color: darken(white,       $darken-amount);
+    }
+}
+.white {
+    background: white;
+    color: black;
+}
+.grey {
+    background: grey;
+    color: white;
+}
+.black {
+    background: black;
+    color: white;
+}
