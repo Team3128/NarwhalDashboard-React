@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Backgrounds.css';
+import './css/Backgrounds.css';
 
 //import useRef and useEffect from react
 import {useState} from 'react';
@@ -7,6 +7,7 @@ import {useState} from 'react';
 import './css/BasicLayoutStyles.css';
 import ListSelector from './ListSelector';
 import {send} from '../RobotConnection/SocketManager';
+import './css/AutoSelector.css';
 
 function AutoSelector(props) {
 
@@ -21,3 +22,5 @@ function AutoSelector(props) {
             />
     );
 }
+
+export default AutoSelector;

@@ -1,9 +1,9 @@
 import React from 'react';
-import '../css/BasicLayoutStyles.css';
+import './css/BasicLayoutStyles.css';
 import RadialGauge from 'canvas-gauges';
 import makeGauge from '../mins/gaugeMaker.js';
 
-import '../css/Backgrounds.css';
+import './css/Backgrounds.css';
 
 //import useRef and useEffect from react
 import {useRef, useEffect} from 'react';
@@ -72,7 +72,17 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
                 background: "white",
                 borderRadius: "20px"   
             }}>
-            <div id="battery">
+            <div id="battery"
+                style = {{
+                    flex: "0 0 160px",
+                    height: "160px",
+                    background: "#b0b0b0",
+                    borderRadius: "14px",
+                    padding: "8px",
+                    color: "white",
+                    textAlign: "center",
+                    verticalAlign: "middle"
+                }}>
                 <font style={{
                     fontSize: "18pt",
                     lineHeight: "12pt"
@@ -88,7 +98,7 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
                     <font id="match_time" style={{
                         fontSize: "60pt",
                         lineHeight: "64pt"
-                    }}>0s</font>
+                    }}>{matchTime+"s"}</font>
                     <br/>
                     <font style={{
                         fontSize: "1.2vw",
@@ -105,7 +115,10 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
                         borderRadius: "16px",
                         display: "inline-block"
                     }}>
-                        <font id="match_state_text" style="font-size: 32; font-weight: 900;">{robotState.name}</font>
+                        <font id="match_state_text" style={{
+                            fontSize: "32pt",
+                            fontWeight: "900"
+                        }}>{robotState.name}</font>
                     </div>
             </div>
         </div>
@@ -115,4 +128,4 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
 export {RobotStates};
 
 
-export default Battery;
+export default BatteryMatchTime;

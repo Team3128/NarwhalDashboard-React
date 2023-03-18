@@ -1,0 +1,87 @@
+.auto_info {
+    align-items: strech; 
+    flex-grow: 0; 
+    padding: 12px; 
+    border-radius: 16px;
+    margin-top: 15px;
+}
+.auto_box {
+    display: flex;
+    flex-direction: column; 
+    color: white;
+    padding-bottom: 8px;
+    font-size: 14pt;
+}
+
+.auto_options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.auto_title {
+    font-weight: 300; 
+    margin-right: 8px;
+}
+.auto_selected {
+    font-weight: 600; 
+    flex: 1 0 auto;
+}
+.auto_choose {
+    border-radius: 6px; 
+    padding: 4px; 
+    margin-left: 28px; 
+    margin-right: 14px;
+}
+
+#auto_list {
+    display: none;
+}
+.auto_choice_none {
+    margin: 0px; 
+    margin-bottom: 4px; 
+    padding: 8px; 
+    border-radius: 6px;
+}
+
+#auto_menu {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    color: white;
+    font-size: 14pt;
+}
+
+#auto_menu p {
+    font-weight: 300;
+    margin-right: 8px;
+}
+
+#selected_auto {
+    font-weight: 600;
+    flex: 1 0 auto;
+}
+
+#toogle_menu {
+    border-radius: 6px;
+    padding: 4px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.auto_list {
+    display: none;
+    margin-top: 10px;
+}
+
+#auto_choice_none {
+    margin: 0px;
+    margin-bottom: 4px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+#auto_img {
+    display: none;
+}

@@ -1,0 +1,57 @@
+.button:hover {
+    cursor: pointer;
+}
+
+.button.squarish {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 22pt;
+}
+
+.button.squarish.h150 {
+    height: 150px;
+}
+
+.button.squarish.h100 {
+    height: 100px;
+}
+
+.button.squarish.h200 {
+    height: 200px;
+}
+
+.button.navy:hover {
+    background: #000022; /* $navy darkened by 30% */
+}
+
+.button.royal:hover {
+    background: #25256b; /* $royal darkened by 30% */
+}
+
+.button.sapphire:hover {
+    background: #001c4d; /* $sapphire darkened by 30% */
+}
+
+.button.pacific:hover {
+    background: #0077b3; /* $pacific darkened by 30% */
+}
+
+.button.red:hover {
+    background: #800000; /* $red darkened by 30% */
+}
+
+.button.orange:hover {
+    background: #992600; /* $orange darkened by 30% */
+}
+
+.button.green:hover {
+    background: #006600; /* $green darkened by 30% */
+}
+
+.button.grey:hover {
+    background: #666666; /* grey darkened by 30% */
+}

@@ -1,55 +1,64 @@
+body {
+    background: #efefef;
+}
+
 .white-black {
     background: white;
     color: black;
     border: 3px solid black;
 }
 .navy {
-    background: $navy;
+    background: #1b1464;
     color: white;
 }
 .royal {
-    background: $royal;
+    background: #072682;
     color: white;
 }
 .sapphire {
-    background: $sapphire;
+    background: #0068a5;
     color: white;
 }
 .pacific {
-    background: $pacific;
+    background: #0085b2;
     color: white;
 }
-.red {
-    background: $red;
-    color: white;
 
-    &.deselected{
-        background: darken($red,       $darken-amount);
-        color: darken(white,       $darken-amount);
-    }
-}
-.orange {
-    background: $orange;
+.red {
+    background: #e20000;
     color: white;
 }
+
+.red.deselected {
+    background: #a10000;
+    color: #ccc;
+}
+
+.orange {
+    background: #f36d00;
+    color: white;
+}
+
 .gold {
     background: gold;
     color: white;
-
-    &.deselected{
-        background: darken(gold,       $darken-amount);
-        color: darken(white,       $darken-amount);
-    }
 }
+
+.gold.deselected {
+    background: #b28c5e;
+    color: #ccc;
+}
+
 .green {
-    background: $green;
+    background: #00d11c;
     color: white;
-
-    &.deselected{
-        background: darken($green,       $darken-amount);
-        color: darken(white,       $darken-amount);
-    }
 }
+
+.green.deselected {
+    background: #007f0e;
+    color: #ccc;
+}
+
 .white {
     background: white;
     color: black;

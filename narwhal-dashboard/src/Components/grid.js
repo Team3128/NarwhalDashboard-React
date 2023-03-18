@@ -1,18 +1,18 @@
 import React, { useImperativeHandle } from 'react';
-import '../css/BasicLayoutStyles.css';
+import './css/BasicLayoutStyles.css';
 
-import '../css/Backgrounds.css';
+import './css/Backgrounds.css';
 
-import '../css/Grid.css';
+import './css/Grid.css';
 
-import config from '../../config.json';
+import config from '../config.json';
 
 //import useRef and useEffect from react
 import {useRef, useEffect, useState, forwardRef} from 'react';
 
 const Grid = forwardRef(function(props, ref) {
 
-    let {litItem, setLitItem} = useState(-1);
+    const [litItem, setLitItem] = useState(-1);
 
     useImperativeHandle(ref, () => ({
         /**
@@ -24,12 +24,15 @@ const Grid = forwardRef(function(props, ref) {
     }));
 
     useEffect(() => {
+
+        if(litItem == -1) return;
+
         const timer = setTimeout(() => {
             setLitItem(-1);
         }, config["gridLightUpTime"]);
 
         return () => clearTimeout(timer);
-    }, [litItem])
+    }, [litItem]);
 
 
     
@@ -75,3 +78,5 @@ const Grid = forwardRef(function(props, ref) {
         </div>
     );
 });
+
+export default Grid;

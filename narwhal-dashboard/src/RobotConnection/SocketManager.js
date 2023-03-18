@@ -1,5 +1,5 @@
 
-import config from "../../config.json";
+import config from "../config.json";
 
 var socket;
 

@@ -1,16 +1,17 @@
 import React from 'react';
-import '../css/Backgrounds.css';
+import './css/Backgrounds.css';
 
 //import useRef and useEffect from react
 import {useState} from 'react';
 
 import './css/BasicLayoutStyles.css';
+import './css/ListSelector.css';
+import './css/Buttons.css';
 
 
 /**
  * 
- * How To Use:
- * 
+ * How To Use: 
  * Here are the props you can pass to this component:
  * itemType: The type of item that is being selected. This is used to display the title of the list selector.
  * imageSrc: The source of the image that will be displayed next to the list selector.
@@ -21,8 +22,8 @@ import './css/BasicLayoutStyles.css';
 
 function ListSelector(props) {
 
-    let {selectedItem, setSelectedItem} = useState(null);
-    let {isMenuToggled, setIsMenuToggled} = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [isMenuToggled, setIsMenuToggled] = useState(false);
 
     return (
         <div className="royal flexbox column list_sel_info">
@@ -33,7 +34,7 @@ function ListSelector(props) {
                 {selectedItem ? selectedItem : "None"}
             </p>
             <div
-                onClick={() => {setIsMenuToggled(!isMenuToggled);}}
+                onClick={() => setIsMenuToggled(!isMenuToggled)}
                 className="button sapphire list_sel_choose"
             >
                 Choose
@@ -46,6 +47,7 @@ function ListSelector(props) {
             display: isMenuToggled ? "block" : "none"
         }}>
             <div
+            id="auto_choice_none"
             onClick={() => {
                 setSelectedItem(null);
                 props.onSelectItem(null);
@@ -55,14 +57,16 @@ function ListSelector(props) {
             None
             </div>
 
-            {props.items.map((index, item) => {
+            {props.items.map((item, index) => {
             return (
                 <div
+                id={"auto_choice_"+index}
+                key={index}
                 onClick={() => {
                     setSelectedItem(item);
                     props.onSelectItem(item);
                 }}
-                className="button sapphire auto_choice"
+                className="button sapphire auto_choice_none"
                 >
                 {item}
                 </div>
