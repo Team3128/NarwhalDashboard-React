@@ -10,6 +10,13 @@ import config from '../config.json';
 //import useRef and useEffect from react
 import {useRef, useEffect, useState, forwardRef} from 'react';
 
+/**
+ * 
+ * This will create the scoring grid GUI
+ * Other pieces of code can light up items on the grid by calling the lightItem() function on a ref of the Grid component.
+ * 
+ */
+
 const Grid = forwardRef(function(props, ref) {
 
     const [litItem, setLitItem] = useState(-1);

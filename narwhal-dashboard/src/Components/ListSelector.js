@@ -11,6 +11,9 @@ import './css/Buttons.css';
 
 /**
  * 
+ * ListSelector creates a list selector that can be used to select an item from a list of items. This component is currently
+ * used to select autos, but it can easily be used for other purposes.
+ * 
  * How To Use: 
  * Here are the props you can pass to this component:
  * itemType: The type of item that is being selected. This is used to display the title of the list selector.
