@@ -1,5 +1,6 @@
-import {React, useState, useRef} from "react";
-import io from 'socket.io-client';
+import React from "react";
+import {useState, useRef, useEffect} from "react";
+import io, { connect } from 'socket.io-client';
 import config from './config.json';
 
 import DashboardBase from './DashboardBase';
@@ -9,7 +10,6 @@ import CameraView from './Components/CameraView';
 import Grid from './Components/Grid';
 import Header from './Components/Header';
 import { RobotStates } from './Components/BatteryMatchTime';
-import reportWebVitals from './reportWebVitals';
 
 
 //TODO: Fill in the disconnected constants
@@ -18,7 +18,8 @@ import reportWebVitals from './reportWebVitals';
 //The disconnectedJson and disconnectedDebugMap define what values the page should use when the robot isn't connected.
 //This ensures that the page doesn't crash when the robot is disconnected and no data is available.
 const disconnectedJson = {
-
+    "isDisconnectedFromRobot": true,
+    "auto": ["Auto 1", "Auto 2"]
 }
 
 const disconnectedDebugMap = new Map();
@@ -29,88 +30,130 @@ disconnectedDebugMap.set("time", 0);
 
 function App() {
 
+    //This state stores the socket
+    const [socket, setSocket] = useState(null);
+
+    //This state stores whether or not the socket is currently connected
+    const [socketConnected, setSocketConnected] = useState(false);
+
     //This state stores the most recent JSON sent by the robot
     const [jsonData, setJsonData] = useState(disconnectedJson);
 
     //This state stores the first JSON sent by the robot
     const [firstJsonData, setFirstJsonData] = useState(disconnectedJson);
 
-    //This state stores the debug map, which is a map of important values that is part of the JSON. We store it separately
-    //since it's hard to access the map from the JSON directly
-    const [debugMap, setDebugMap] = useState(new Map(JSON.parse(JSON.stringify(disconnectedDebugMap))));
+    //This state stores the debug map, which is a map of important values that is part of the JSON. 
+    //We store it separately since it's hard to access the map from the JSON directly
+    const [debugMap, setDebugMap] = useState(new Map(JSON.parse(JSON.stringify(Array.from(disconnectedDebugMap)))));
 
     //This state stores the current match state of the robot
     const [robotMatchState, setRobotMatchState] = useState(RobotStates.DISABLED);
 
     const gridRef = useRef(null);
 
+
+    const connectToRobot = () => {
+            //Connect to the web socket
+            setSocket(new WebSocket(config.robotIp));
+    };
+
+    const disconnectFromRobot = () => {
+        if(socket) {
+            socket.close();
+        }
+    }
+
     //This code is called when the page is loaded. It creates a web socket to the robot and defines what to do
     //on the first connection, on each message, and on disconnect
     useEffect(() => {
 
-        //Connect to the web socket
-        const socket = io(config.robotIp);
-
-        //Called when the code connects to the robot
-        socket.on('connect', () => {
-            console.log("Connected");
-        });
-
-        //Called whenever the robot sends a message
-        socket.on('message', (data) => {
-            //Update JSON
-            setJsonData(data);
-            if (Object.keys(firstJsonData).length === 0) {
-                setFirstJsonData(data);
-            }
-
-            //Retrieve Debug Map
-            if(data["debug"]) {
-                for(const [key, value] of Object.entries(data["debug"])) {
-                    debugMap.set(key, value);
-                }
-            }
-
-            //Calculate Robot Match State
-            if(debugMap.get("time") <= 0) {
-                setRobotMatchState(RobotStates.DISABLED);
-            }
-            else if(debugMap.get("time") <= 15 && robotMatchState == RobotStates.DISABLED) {
-                setRobotMatchState(RobotStates.AUTO);
-            }
-            else if(debugMap.get("time") <= 30) {
-                setRobotMatchState(RobotStates.ENDGAME);
-            }
-            else if(debugMap.get("time") <= 135) {
-                setRobotMatchState(RobotStates.TELEOP);
-            }
-
-            //Light Up Grid If Needed
-            if(data["selectedGridCell"] && gridRef.current) {
-                gridRef.current.lightItem([data["selectedGridCell"]["y"], data["selectedGridCell"]["x"]]);
-            }
-
-        });
-
-        //Called on disconnect
-        socket.on('disconnect', () => {
-            setJsonData(disconnectedJson);
-            setDebugMap(new Map(JSON.parse(JSON.stringify(disconnectedDebugMap))));
-        });
-
         //If the page is closed, disconnect the socket
         return () => {
-            socket.disconnect();
+            if(socket) {
+                socket.close();
+            }
         }
 
     }, []);
 
+    useEffect(() => {
+
+        if(!socket) {
+            return;
+        }
+
+        //Called when the code connects to the robot
+        socket.onopen = () => {
+            setSocketConnected(true);
+            console.log("Connected");
+        };
+
+        //Called whenever the robot sends a message
+        socket.onmessage = (event) => {
+
+            let data = JSON.parse(event.data);
+
+            console.log(data);
+
+            //Update JSON
+            setJsonData(data);
+
+            //Update first JSON if it hasn't been set yet
+            //TODO: Make this more elegant
+            if(data.hasOwnProperty("auto")) {
+                setFirstJsonData(data);
+            }
+
+            // if (Object.keys(firstJsonData).length === 0) {
+            //     setFirstJsonData(data);
+            // }
+
+        };
+
+        //Called on disconnect
+        socket.onclose = () => {
+            setSocketConnected(false);
+            setFirstJsonData(disconnectedJson);
+            setJsonData(disconnectedJson);
+            setDebugMap(new Map(JSON.parse(JSON.stringify(Array.from(disconnectedDebugMap)))));
+        };
+    }, [socket]);
+
+
+    useEffect(() => {
+        //Retrieve Debug Map
+        if(jsonData["debug"]) {
+            for(const [key, value] of Object.entries(jsonData["debug"])) {
+                debugMap.set(key, value);
+            }
+        }
+
+        //Calculate Robot Match State
+        if(debugMap.get("time") <= 0) {
+            setRobotMatchState(RobotStates.DISABLED);
+        }
+        else if(debugMap.get("time") <= 15 && robotMatchState == RobotStates.DISABLED) {
+            setRobotMatchState(RobotStates.AUTO);
+        }
+        else if(debugMap.get("time") <= 30) {
+            setRobotMatchState(RobotStates.ENDGAME);
+        }
+        else if(debugMap.get("time") <= 135) {
+            setRobotMatchState(RobotStates.TELEOP);
+        }
+
+        //Light Up Grid If Needed
+        if(jsonData["selectedGridCell"] && gridRef.current) {
+            gridRef.current.lightItem([jsonData["selectedGridCell"]["y"], jsonData["selectedGridCell"]["x"]]);
+        }
+    }, [jsonData]);
+
     return (
         <>
-            <Header/>
+            <Header connect={connectToRobot} disconnect={disconnectFromRobot} connectionStatus={socketConnected}/>
             <div>
 
-            <div id="cover" className="cover"></div>
+            {!socketConnected && <div id="cover" className="cover"></div>}
             
             <DashboardBase leftWidth = {40} middleWidth = {30} rightWidth = {30}
             left = {
@@ -127,7 +170,7 @@ function App() {
                     borderRadius: 16
                     }}
                 >
-                    <AutoSelector autoPrograms={firstJsonData["auto"]}/>
+                    <AutoSelector socket={socket} autoPrograms={firstJsonData['auto']}/>
                 </div>
                 </>
             }

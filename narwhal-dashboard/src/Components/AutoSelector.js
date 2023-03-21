@@ -16,7 +16,7 @@ function AutoSelector(props) {
                 itemType="Auto"
                 items={props.autoPrograms}
                 onSelectItem={(item) => {
-                    send("selectauto:" + item);
+                    props.socket.send("selectauto:" + item);
                     //TODO: Update the auto image
                 }}
             />
