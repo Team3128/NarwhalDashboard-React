@@ -2,13 +2,11 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import DashboardBase from './DashboardBase';
-import Battery from './Components/Battery';
-import reportWebVitals from './reportWebVitals';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DashboardBase leftWidth = {50} middleWidth = {25} rightWidth = {25}  />
+    <App/>
   </React.StrictMode>
 );

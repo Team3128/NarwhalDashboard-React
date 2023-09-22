@@ -1,9 +1,5 @@
 import React from 'react'
-import './BasicLayoutStyles.css';
-
-import Timer from './Components/timer.js';
-import Grid from './Components/grid.js';
-import Auto from './Components/auto.js';
+import './Components/css/BasicLayoutStyles.css';
 
 //Props:
 //left: Left component
@@ -33,19 +29,23 @@ function DashboardBase({
   }
 
   return (
-    <div className="flexbox row squash" style={{"alignItems": "stretch"}}>
-        <div className="flexbox column squash" style={{"flex": `0 0 ${leftWidth}%`}}>
-            {left}
-        </div>
-        
+    <div id="dashboard" style = {{
+      margin: "25px"
+    }}>
+      <div className="flexbox row squash" style={{"alignItems": "stretch"}}>
+          <div className="flexbox column squash" style={{"flex": `0 0 ${leftWidth}%`}}>
+              {left}
+          </div>
+          
 
-        <div className="flexbox column squash" style={{"flex":`0 0 ${middleWidth}%`}}>
-            {middle}
-        </div>
+          <div className="flexbox column squash" style={{"flex":`0 0 ${middleWidth}%`}}>
+              {middle}
+          </div>
 
-        <div>
-            {right}
-        </div>
+          <div className="flexbox column squash" style={{"flex": `0 0 ${rightWidth}%`}}>
+              {right}
+          </div>
+      </div>
     </div>
   );
 }
