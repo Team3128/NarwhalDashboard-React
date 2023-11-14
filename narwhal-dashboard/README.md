@@ -1,10 +1,19 @@
-# Getting Started with Create React App
+# Narwhal Dashboard (React.js v!!)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Currently in progress....
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### Setup:
+
+Make sure Node.js + npm is downloaded. This version of NarDashboard does not support 18.0 version of Node.js to make sure to download version 17.0!
+
+### Step 1:
+
+First things first - make sure to run cd narwhal-dashboard in terminal. "cd" or command directory helps to set up "narwhal-dashboard" as the folder in which our react app resides so we can run other commands like npm start.
 
 ### `npm start`
 
@@ -13,6 +22,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+* NOTE: For Dashboard, we are always using npm start (both in comp and during testing)!
 
 ### `npm test`
 
