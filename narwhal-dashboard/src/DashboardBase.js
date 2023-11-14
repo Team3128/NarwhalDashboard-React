@@ -20,7 +20,7 @@ function DashboardBase({
 
   //Ensure sum of props.leftWidth, props.middleWidth, props.rightWidth is 100
 
-  if(leftWidth + middleWidth + rightWidth != 100) {
+  if(leftWidth + middleWidth + rightWidth !== 100) {
     console.log("Error: Sum of leftWidth, middleWidth, rightWidth is not 100");
     console.log("leftWidth: " + leftWidth);
     console.log("middleWidth: " + middleWidth);

@@ -18,6 +18,8 @@ function connectSocket() {
 
 function onSocketMessage(event) {
     //TODO: Fill this in
+    console.log("Running")
+
 }
 
 function send(command) {

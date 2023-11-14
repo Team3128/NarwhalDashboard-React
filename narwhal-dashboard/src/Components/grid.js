@@ -47,37 +47,37 @@ const Grid = forwardRef(function(props, ref) {
     return (
         <div className="flexbox grid_info">
             <div className="flexbox grid_flex top">
-                <div className={`grid_item top cone${litItem == 0 ? " grid_glow" : ""}`}>
+                <div className={`grid_item top cone${litItem === 0 ? " grid_glow" : ""}`}>
                     <div className="shape" />
                 </div>
-                <div className={`grid_item top cube${litItem == 1 ? " grid_glow" : ""}`}>
+                <div className={`grid_item top cube${litItem === 1 ? " grid_glow" : ""}`}>
                     <div className="shape" />
                 </div>
-                <div className={`grid_item top cone${litItem == 2 ? " grid_glow" : ""}`}>
+                <div className={`grid_item top cone${litItem === 2 ? " grid_glow" : ""}`}>
                     <div className="shape" />
                 </div>
             </div>
             <div className="flexbox grid_flex mid">
-                <div className={`grid_item mid cone${litItem == 3 ? " grid_glow" : ""}`}>
+                <div className={`grid_item mid cone${litItem === 3 ? " grid_glow" : ""}`}>
                     <div className="shape" />
                 </div>
-                <div className={`grid_item mid cube${litItem == 4 ? " grid_glow" : ""}`}>
+                <div className={`grid_item mid cube${litItem === 4 ? " grid_glow" : ""}`}>
                     <div className="shape" />
                 </div>
-                <div className={`grid_item mid cone${litItem == 5 ? " grid_glow" : ""}`}>
+                <div className={`grid_item mid cone${litItem === 5 ? " grid_glow" : ""}`}>
                     <div className="shape" />
                 </div>
             </div>
             <div className="flexbox grid_flex low">
-                <div className={`grid_item unisex${litItem == 6 ? " grid_glow" : ""}`}>
+                <div className={`grid_item unisex${litItem === 6 ? " grid_glow" : ""}`}>
                     <div className="tri" />
                     <div className="sq" />
                 </div>
-                <div className={`grid_item unisex${litItem == 7 ? " grid_glow" : ""}`}>
+                <div className={`grid_item unisex${litItem === 7 ? " grid_glow" : ""}`}>
                     <div className="tri" />
                     <div className="sq" />
                 </div>
-                <div className={`grid_item unisex${litItem == 8 ? " grid_glow" : ""}`}>
+                <div className={`grid_item unisex${litItem === 8 ? " grid_glow" : ""}`}>
                     <div className="tri" />
                     <div className="sq" />
                 </div>

@@ -18,6 +18,7 @@ function AutoSelector(props) {
                 onSelectItem={(item) => {
                     props.socket.send("selectauto:" + item);
                     //TODO: Update the auto image
+                    
                 }}
             />
     );
