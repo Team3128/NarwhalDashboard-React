@@ -19,7 +19,7 @@ import { RobotStates } from './Components/BatteryMatchTime';
 //This ensures that the page doesn't crash when the robot is disconnected and no data is available.
 const disconnectedJson = {
     "isDisconnectedFromRobot": true,
-    "auto": ["Auto 1", "Auto 2"]
+    "auto": []
 }
 
 const disconnectedDebugMap = new Map();
@@ -88,7 +88,7 @@ function App() {
             console.log("Connected");
         };
 
-        //Called whenever the robot sends a message
+        //Called whenever the robot sends a message - get json
         socket.onmessage = (event) => {
 
             let data = JSON.parse(event.data);
@@ -97,6 +97,7 @@ function App() {
 
             //Update JSON
             setJsonData(data);
+            console.log(jsonData)
 
             //Update first JSON if it hasn't been set yet
             //TODO: Make this more elegant
@@ -122,10 +123,13 @@ function App() {
 
     useEffect(() => {
         //Retrieve Debug Map
-        if(jsonData["debug"]) {
-            for(const [key, value] of Object.entries(jsonData["debug"])) {
-                debugMap.set(key, value);
-            }
+        // if(jsonData["debug"]) {
+        //     for(const [key, value] of Object.entries(jsonData["debug"])) {
+        //         debugMap.set(key, value);
+        //     }
+        // }
+        for (var item of Object.keys(jsonData)) {
+            debugMap.set(item, jsonData[item])
         }
 
         //Calculate Robot Match State

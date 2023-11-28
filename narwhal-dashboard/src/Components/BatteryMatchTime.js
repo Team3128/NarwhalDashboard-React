@@ -53,6 +53,8 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
             {from: 12, to: 15, color: "#41c603"}
         ], "white", "white", "#0085b2", 2, 32);
 
+        //TODO: change size
+
     }, []);
 
     //This useEffect is called whenever the voltage prop changes. We are telling the gauge object to update the value
