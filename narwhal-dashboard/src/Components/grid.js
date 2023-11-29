@@ -3,7 +3,7 @@ import './css/BasicLayoutStyles.css';
 
 import './css/Backgrounds.css';
 
-import './css/Grid.css';
+import './css/grid.css';
 
 import config from '../config.json';
 
