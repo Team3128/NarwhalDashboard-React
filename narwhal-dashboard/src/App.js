@@ -7,7 +7,7 @@ import DashboardBase from './DashboardBase';
 import Battery from './Components/BatteryMatchTime';
 import AutoSelector from './Components/AutoSelector';
 import CameraView from './Components/CameraView';
-import Grid from './Components/grid';
+import Grid from "./Components/Grid";
 import Header from './Components/Header';
 import { RobotStates } from './Components/BatteryMatchTime';
 import Button from "./Components/Button";
@@ -27,6 +27,7 @@ const disconnectedDataMap = new Map();
 disconnectedDataMap.set("voltage", 0);
 disconnectedDataMap.set("time", 0);
 disconnectedDataMap.set("auto", ["Test"]);
+disconnectedDataMap.set("selectedNode", -1);
 
 function App() {
 
@@ -109,10 +110,6 @@ function App() {
             setRobotMatchState(RobotStates.TELEOP);
         }
     
-        //Light Up Grid If Needed
-        if(jsonData["selectedGridCell"] && gridRef.current) {
-            gridRef.current.lightItem([jsonData["selectedGridCell"]["y"], jsonData["selectedGridCell"]["x"]]);
-        }
         // console.log(dataMap);
     }, [jsonData]);
 
@@ -150,7 +147,7 @@ function App() {
             }
             right = {
                 <>
-                <Grid ref={gridRef}/>
+                <Grid selectedNode = {dataMap.get("selectedNode")}/>
                 </>
             }
             
