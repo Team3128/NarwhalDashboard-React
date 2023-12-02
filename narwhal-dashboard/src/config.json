@@ -1,5 +1,5 @@
 {
-    "robotIp": "ws:10.31.28.2:5805", 
-    "robotIpUnoperational": "ws:localhost:5805",
+    "robotIpUnoperational": "ws:10.31.28.2:5805", 
+    "robotIp": "ws:localhost:5805",
     "gridLightUpTime": 1000
 }
