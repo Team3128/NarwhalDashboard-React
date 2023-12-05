@@ -6,7 +6,6 @@ import {useState} from 'react';
 
 import './css/BasicLayoutStyles.css';
 import {send} from '../RobotConnection/SocketManager';
-import './css/AutoSelector.css';
 
 /**
  * Used to make a button that sends its state to the robot
@@ -24,7 +23,7 @@ function Button(props) {
     useEffect(()=> {
         if (props.socket != null) {
             console.log("button:" + props.name + ":" + state);
-            props.socket.send("button:" + props.name + ":" + state);
+            props.socket.send("button:" + props.name + ":" + (state ? "down" : "up"));
         }
     }, [state])
 

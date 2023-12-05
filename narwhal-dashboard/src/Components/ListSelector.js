@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './css/Backgrounds.css';
 
 //import useRef and useEffect from react
@@ -28,6 +28,10 @@ function ListSelector(props) {
     const [selectedItem, setSelectedItem] = useState(null);
     const [isMenuToggled, setIsMenuToggled] = useState(false);
 
+    useEffect(()=> {
+        console.log(props.imageSrc);
+    }, [props.imageSrc])
+
     return (
         <div className="royal flexbox column list_sel_info">
         <div className="list_sel_box">
@@ -53,6 +57,7 @@ function ListSelector(props) {
             id="auto_choice_none"
             onClick={() => {
                 setSelectedItem(null);
+                setIsMenuToggled(false);
                 props.onSelectItem(null);
             }}
             className="button sapphire auto_choice_none"
@@ -67,6 +72,7 @@ function ListSelector(props) {
                 key={index}
                 onClick={() => {
                     setSelectedItem(item);
+                    setIsMenuToggled(false);
                     props.onSelectItem(item);
                 }}
                 className="button sapphire auto_choice_none"

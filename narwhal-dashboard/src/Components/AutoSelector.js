@@ -10,16 +10,18 @@ import {send} from '../RobotConnection/SocketManager';
 import './css/AutoSelector.css';
 
 function AutoSelector(props) {
+    const [selectedAuto, selectAuto] = useState(null);
 
     return (
             <ListSelector
                 itemType="Auto"
                 items={props.autoPrograms}
                 onSelectItem={(item) => {
-                    props.socket.send("selectauto:" + item);
-                    //TODO: Update the auto image
-                    
+                    props.socket.send("selectAuto:" + item);
+                    selectAuto(item);
                 }}
+                //Image must be in the public folder to change on runtime
+                imageSrc = {selectedAuto != null ? process.env.PUBLIC_URL + "/" + selectedAuto + '.png' : ""}
             />
     );
 }
