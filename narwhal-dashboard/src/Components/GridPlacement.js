@@ -3,7 +3,7 @@ import './css/BasicLayoutStyles.css';
 
 import './css/Backgrounds.css';
 
-import './css/Grid.css';
+import './css/GridPlacement.css';
 
 /**
  * 
@@ -12,7 +12,7 @@ import './css/Grid.css';
  * 
  */
 
-function Grid({selectedNode = -1}) {
+function GridPlacement({selectedNode = -1}) {
 
     return (
         <div className="flexbox grid_info">
@@ -56,4 +56,4 @@ function Grid({selectedNode = -1}) {
     );
 }
 
-export default Grid;
+export default GridPlacement;

@@ -7,7 +7,7 @@ import DashboardBase from './DashboardBase';
 import Battery from './Components/BatteryMatchTime';
 import AutoSelector from './Components/AutoSelector';
 import CameraView from './Components/CameraView';
-import Grid from "./Components/Grid";
+import GridPlacement from "./Components/GridPlacement";
 import Header from './Components/Header';
 import { RobotStates } from './Components/BatteryMatchTime';
 import Button from "./Components/Button";
@@ -147,7 +147,7 @@ function App() {
             }
             right = {
                 <>
-                <Grid selectedNode = {dataMap.get("selectedNode")}/>
+                <GridPlacement selectedNode = {dataMap.get("selectedNode")}/>
                 </>
             }
             
