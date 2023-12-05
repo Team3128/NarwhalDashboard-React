@@ -1,0 +1,17 @@
+.flexRowTabs {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexRowTabs div {
+    width: 33.333333%;
+    text-align: center;
+}
+
+.flexRowTabs div:hover {
+    cursor: pointer;
+}
+
+.active {
+    background-color: green;
+}

@@ -34,25 +34,25 @@ function ListSelector(props) {
 
     return (
         <div className="royal flexbox column list_sel_info">
-        <div className="list_sel_box">
-            <div className="list_sel_options">
-            <p className="list_sel_title">Selected {props.itemType}:</p>
-            <p className="list_sel_selected_item">
-                {selectedItem ? selectedItem : "None"}
-            </p>
-            <div
-                onClick={() => setIsMenuToggled(!isMenuToggled)}
-                className="button sapphire list_sel_choose"
-            >
-                Choose
+            <div className="list_sel_box">
+                <div className="list_sel_options">
+                <p className="list_sel_title">Selected {props.itemType}:</p>
+                <p className="list_sel_selected_item">
+                    {selectedItem ? selectedItem : "None"}
+                </p>
+                <div
+                    onClick={() => setIsMenuToggled(!isMenuToggled)}
+                    className="button sapphire list_sel_choose"
+                >
+                    Choose
+                </div>
+                </div>
+                <img className="list_sel_img" src={props.imageSrc} />
             </div>
-            </div>
-            <img className="list_sel_img" src={props.imageSrc} />
-        </div>
-        {/* Selection / Allows you to select the Auto-Program to load /*/}
-        <div className="list_sel_full_list" style={{
-            display: isMenuToggled ? "block" : "none"
-        }}>
+            {/* Selection / Allows you to select the Auto-Program to load /*/}
+            <div className="list_sel_full_list" style={{
+                display: isMenuToggled ? "block" : "none"
+            }}>
             <div
             id="auto_choice_none"
             onClick={() => {
@@ -66,20 +66,20 @@ function ListSelector(props) {
             </div>
 
             {props.items.map((item, index) => {
-            return (
-                <div
-                id={"auto_choice_"+index}
-                key={index}
-                onClick={() => {
-                    setSelectedItem(item);
-                    setIsMenuToggled(false);
-                    props.onSelectItem(item);
-                }}
-                className="button sapphire auto_choice_none"
-                >
-                {item}
-                </div>
-            );
+                return (
+                    <div
+                    id={"auto_choice_"+index}
+                    key={index}
+                    onClick={() => {
+                        setSelectedItem(item);
+                        setIsMenuToggled(false);
+                        props.onSelectItem(item);
+                    }}
+                    className="button sapphire auto_choice_none"
+                    >
+                    {item}
+                    </div>
+                );
             })}
         </div>
     </div>
