@@ -5,6 +5,11 @@
     border-radius: 16px;
     margin-top: 15px;
 }
+
+.list_sel_img {
+    width: 100%;
+}
+
 .list_sel_box {
     display: flex;
     flex-direction: column; 

@@ -7,9 +7,10 @@ import DashboardBase from './DashboardBase';
 import Battery from './Components/BatteryMatchTime';
 import AutoSelector from './Components/AutoSelector';
 import CameraView from './Components/CameraView';
-import Grid from './Components/Grid';
+import Grid from "./Components/Grid";
 import Header from './Components/Header';
 import { RobotStates } from './Components/BatteryMatchTime';
+import Button from "./Components/Button";
 
 
 //TODO: Fill in the disconnected constants
@@ -21,12 +22,12 @@ const disconnectedJson = {
     "isDisconnectedFromRobot": true,
     "auto": []
 }
+const disconnectedDataMap = new Map();
 
-const disconnectedDebugMap = new Map();
-
-//Populate Map
-disconnectedDebugMap.set("voltage", 0);
-disconnectedDebugMap.set("time", 0);
+disconnectedDataMap.set("voltage", 0);
+disconnectedDataMap.set("time", 0);
+disconnectedDataMap.set("auto", ["Test"]);
+disconnectedDataMap.set("selectedNode", -1);
 
 function App() {
 
@@ -39,22 +40,19 @@ function App() {
     //This state stores the most recent JSON sent by the robot
     const [jsonData, setJsonData] = useState(disconnectedJson);
 
-    //This state stores the first JSON sent by the robot
-    const [firstJsonData, setFirstJsonData] = useState(disconnectedJson);
-
-    //This state stores the debug map, which is a map of important values that is part of the JSON. 
-    //We store it separately since it's hard to access the map from the JSON directly
-    const [debugMap, setDebugMap] = useState(new Map(JSON.parse(JSON.stringify(Array.from(disconnectedDebugMap)))));
+    //Map to store messages from java side
+    const [dataMap, setDataMap] = useState(new Map(JSON.parse(JSON.stringify(Array.from(disconnectedDataMap)))));
 
     //This state stores the current match state of the robot
     const [robotMatchState, setRobotMatchState] = useState(RobotStates.DISABLED);
 
+    //Todo move this into the dataMap
     const gridRef = useRef(null);
 
 
     const connectToRobot = () => {
-            //Connect to the web socket
-            setSocket(new WebSocket(config.robotIp));
+        //Connect to the web socket
+        setSocket(new WebSocket(config.robotIp));
     };
 
     const disconnectFromRobot = () => {
@@ -62,19 +60,6 @@ function App() {
             socket.close();
         }
     }
-
-    //This code is called when the page is loaded. It creates a web socket to the robot and defines what to do
-    //on the first connection, on each message, and on disconnect
-    useEffect(() => {
-
-        //If the page is closed, disconnect the socket
-        return () => {
-            if(socket) {
-                socket.close();
-            }
-        }
-
-    }, []);
 
     useEffect(() => {
 
@@ -91,65 +76,41 @@ function App() {
         //Called whenever the robot sends a message - get json
         socket.onmessage = (event) => {
 
-            let data = JSON.parse(event.data);
+            const data = JSON.parse(event.data);
 
-            console.log(data);
+            // console.log(data);
 
-            //Update JSON
             setJsonData(data);
-            console.log(jsonData)
-
-            //Update first JSON if it hasn't been set yet
-            //TODO: Make this more elegant
-            if(data.hasOwnProperty("auto")) {
-                setFirstJsonData(data);
-            }
-
-            // if (Object.keys(firstJsonData).length === 0) {
-            //     setFirstJsonData(data);
-            // }
-
-        };
-
+        }
+        
         //Called on disconnect
         socket.onclose = () => {
             setSocketConnected(false);
-            setFirstJsonData(disconnectedJson);
-            setJsonData(disconnectedJson);
-            setDebugMap(new Map(JSON.parse(JSON.stringify(Array.from(disconnectedDebugMap)))));
+            setDataMap(new Map(JSON.parse(JSON.stringify(Array.from(disconnectedDataMap)))));
         };
     }, [socket]);
 
-
-    useEffect(() => {
-        //Retrieve Debug Map
-        // if(jsonData["debug"]) {
-        //     for(const [key, value] of Object.entries(jsonData["debug"])) {
-        //         debugMap.set(key, value);
-        //     }
-        // }
-        for (var item of Object.keys(jsonData)) {
-            debugMap.set(item, jsonData[item])
+    useEffect(()=> {
+        //Update JSON
+        for (const item of Object.keys(jsonData)) {
+            dataMap.set(item, jsonData[item])
         }
-
+    
         //Calculate Robot Match State
-        if(debugMap.get("time") <= 0) {
+        if(dataMap.get("time") <= 0) {
             setRobotMatchState(RobotStates.DISABLED);
         }
-        else if(debugMap.get("time") <= 15 && robotMatchState == RobotStates.DISABLED) {
+        else if(dataMap.get("time") <= 15 && robotMatchState == RobotStates.DISABLED) {
             setRobotMatchState(RobotStates.AUTO);
         }
-        else if(debugMap.get("time") <= 30) {
+        else if(dataMap.get("time") <= 30) {
             setRobotMatchState(RobotStates.ENDGAME);
         }
-        else if(debugMap.get("time") <= 135) {
+        else if(dataMap.get("time") <= 135) {
             setRobotMatchState(RobotStates.TELEOP);
         }
-
-        //Light Up Grid If Needed
-        if(jsonData["selectedGridCell"] && gridRef.current) {
-            gridRef.current.lightItem([jsonData["selectedGridCell"]["y"], jsonData["selectedGridCell"]["x"]]);
-        }
+    
+        // console.log(dataMap);
     }, [jsonData]);
 
     return (
@@ -162,7 +123,7 @@ function App() {
             <DashboardBase leftWidth = {40} middleWidth = {30} rightWidth = {30}
             left = {
                 <>
-                <Battery voltage = {debugMap.get("voltage")} matchTime = {Number(debugMap.get("time")).toFixed(0)} robotState = {robotMatchState}/>
+                <Battery voltage = {dataMap.get("voltage")} matchTime = {Number(dataMap.get("time")).toFixed(0)} robotState = {robotMatchState}/>
                 <div
                     className="flexbox column"
                     style={{
@@ -174,16 +135,19 @@ function App() {
                     borderRadius: 16
                     }}
                 >
-                    <AutoSelector socket={socket} autoPrograms={firstJsonData['auto']}/>
+                    <AutoSelector socket={socket} autoPrograms={dataMap.get('auto')}/>
                 </div>
                 </>
             }
             middle = {
+                <>
                 <CameraView cameraName="The Camera" cameraURL="google.com"/>
+                <Button socket = {socket} name = {"Example"}/>
+                </>
             }
             right = {
                 <>
-                <Grid ref={gridRef}/>
+                <Grid selectedNode = {dataMap.get("selectedNode")}/>
                 </>
             }
             
@@ -194,5 +158,6 @@ function App() {
     );
 
 }
+
 
 export default App;
