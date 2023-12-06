@@ -13,6 +13,8 @@ import { RobotStates } from './Components/BatteryMatchTime';
 import Button from "./Components/Button";
 import Tabs from "./Components/tab_components/Tabs";
 import {activeTab} from "./Components/tab_components/Tabs"
+import DriverView from "./Components/tab_components/DriverView";
+import AutoSelect from "./Components/tab_components/AutoSelect";
 
 
 
@@ -138,41 +140,45 @@ function App() {
 
             <div><Tabs driverView = {handleTabDriverView} auto = {handleTabAuto} debug = {handleTabDebug}/></div>
             
-            {(activeTab == "driverView") &&
-                (<DashboardBase leftWidth = {40} middleWidth = {30} rightWidth = {30}
-                    left = {
-                        <>
-                        <Battery voltage = {dataMap.get("voltage")} matchTime = {Number(dataMap.get("time")).toFixed(0)} robotState = {robotMatchState}/>
-                        <div
-                            className="flexbox column"
-                            style={{
-                            alignItems: "strech",
-                            flexGrow: 0,
-                            margin: 25,
-                            marginBottom: 0,
-                            padding: 0,
-                            borderRadius: 16
-                            }}
-                        >
-                            <AutoSelector socket={socket} autoPrograms={dataMap.get('auto')}/>
-                        </div>
-                        </>
-                    }
-                    middle = {
-                        <>
-                        <CameraView cameraName="The Camera" cameraURL="google.com"/>
-                        <Button socket = {socket} name = {"Example"}/>
-                        </>
-                    }
-                    right = {
-                        <>
-                        <GridPlacement selectedNode = {dataMap.get("selectedNode")}/>
-                        </>
-                    }
+            {(activeTab == "driverView") && (<DriverView dataMap = {dataMap} robotMatchState = {robotMatchState} socket = {socket}/>)
+                // (<DashboardBase leftWidth = {40} middleWidth = {30} rightWidth = {30}
+                //     left = {
+                //         <>
+                //         <Battery voltage = {dataMap.get("voltage")} matchTime = {Number(dataMap.get("time")).toFixed(0)} robotState = {robotMatchState}/>
+                //         <div
+                //             className="flexbox column"
+                //             style={{
+                //             alignItems: "strech",
+                //             flexGrow: 0,
+                //             margin: 25,
+                //             marginBottom: 0,
+                //             padding: 0,
+                //             borderRadius: 16
+                //             }}
+                //         >
+                //             <AutoSelector socket={socket} autoPrograms={dataMap.get('auto')}/>
+                //         </div>
+                //         </>
+                //     }
+                //     middle = {
+                //         <>
+                //         <CameraView cameraName="The Camera" cameraURL="google.com"/>
+                //         <Button socket = {socket} name = {"Example"}/>
+                //         </>
+                //     }
+                //     right = {
+                //         <>
+                //         <GridPlacement selectedNode = {dataMap.get("selectedNode")}/>
+                //         </>
+                //     }
                     
-                    />)
+                //     />)
             }
+
+            {(activeTab == "auto") && <AutoSelect  dataMap = {dataMap} socket = {socket}/>}
             
+            {(activeTab == "debug") && <p>Someone make this</p>}
+
             </div>
         </>
     );

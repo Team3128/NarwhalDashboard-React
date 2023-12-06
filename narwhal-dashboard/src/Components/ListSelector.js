@@ -28,11 +28,8 @@ function ListSelector(props) {
     const [selectedItem, setSelectedItem] = useState(null);
     const [isMenuToggled, setIsMenuToggled] = useState(false);
 
-    useEffect(()=> {
-        console.log(props.imageSrc);
-    }, [props.imageSrc])
-
     return (
+        <div className = "list_sel">
         <div className="royal flexbox column list_sel_info">
             <div className="list_sel_box">
                 <div className="list_sel_options">
@@ -47,7 +44,6 @@ function ListSelector(props) {
                     Choose
                 </div>
                 </div>
-                <img className="list_sel_img" src={props.imageSrc} />
             </div>
             {/* Selection / Allows you to select the Auto-Program to load /*/}
             <div className="list_sel_full_list" style={{
@@ -82,6 +78,8 @@ function ListSelector(props) {
                 );
             })}
         </div>
+    </div>
+    <img className="list_sel_img" src={props.imageSrc} />
     </div>
     );
 }

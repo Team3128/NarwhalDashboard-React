@@ -1,13 +1,19 @@
+.list_sel {
+    display: flex;
+    flex-direction: row;
+}
+
 .list_sel_info {
     align-items: strech; 
     flex-grow: 0; 
     padding: 12px; 
     border-radius: 16px;
     margin-top: 15px;
+    width: 50%;
 }
 
 .list_sel_img {
-    width: 100%;
+    width: 50%;
 }
 
 .list_sel_box {
