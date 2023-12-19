@@ -37,12 +37,12 @@ function Header(props) {
     }, [props.connectionStatus]);
 
     return (
-        <div className="flexbox row navy" style={{ alignItems: "center", flexGrow: 0, padding: "10px", margin: "0px" }}>
+        <div className="flexbox row navy" style={{ alignItems: "center", flexGrow: 0, padding: "5px", paddingLeft: "15px", paddingRight: "15px", margin: "0px" }}>
             <div style={{ flex: "1 0 auto" }}>
-                <a href="/"><img style={{ height: "60px" }} src={logo}/></a>
+                <a href="/"><img style={{ height: "50px" }} src={logo}/></a>
             </div>
 
-            <div id="conn_button" className={`button ${connectionState.color}`} style={{ flex: "0 0 auto", borderRadius: "6px", padding: "10px", paddingLeft: "14px", paddingRight: "14px" }}
+            <div id="conn_button" className={`button ${connectionState.color}`} style={{ flex: "0 0 auto", borderRadius: "6px", padding: "10px", paddingLeft: "17px", paddingRight: "17px" }}
                 onClick={() => {
                     if(connectionState === ConnectionStates.DISCONNECTED) {
                         props.connect();

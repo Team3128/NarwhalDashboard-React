@@ -2,11 +2,11 @@ import { RadialGauge, LinearGauge } from "canvas-gauges";
 
 var clear = "rgba(0,0,0,0)";
 
-    function makeGauge(id, size, min, max, major_ticks, minor_ticks, highlights, needle_color, text_color, prog_color, dec, number_size) {
+    function makeGauge(id, width, min, max, major_ticks, minor_ticks, highlights, needle_color, text_color, prog_color, dec, number_size) {
         var gauge = new RadialGauge({ 
             renderTo: id,
-            width: size,
-            height: size,
+            width: width,
+            height: width,
             minValue: min,
             maxValue: max,
             majorTicks: major_ticks,

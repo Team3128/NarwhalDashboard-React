@@ -1,22 +1,21 @@
 import React from 'react';
 
 import DashboardBase from '../../DashboardBase';
-import Battery from '../BatteryMatchTime';
+import Battery from '../Battery';
 import AutoSelector from '../AutoSelector';
 import CameraView from '../CameraView';
-import GridPlacement from "../GridPlacement";
 import Button from '../Button';
-
+import Field from '../Field';
 
 const DriverView = (props) => {
-    return <DashboardBase leftWidth = {40} middleWidth = {30} rightWidth = {30}
+    return <DashboardBase leftWidth = {40} middleWidth = {0} rightWidth = {60}
         left = {
             <>
-            <Battery voltage = {props.dataMap.get("voltage")} matchTime = {Number(props.dataMap.get("time")).toFixed(0)} robotState = {props.robotMatchState}/>
+            <Battery voltage = {props.dataMap.get("voltage").toFixed(10)} matchTime = {Number(props.dataMap.get("time")).toFixed(0)} robotState = {props.robotMatchState}/>
             <div
                 className="flexbox column"
                 style={{
-                alignItems: "strech",
+                alignItems: "stretch",
                 flexGrow: 0,
                 margin: 25,
                 marginBottom: 0,
@@ -25,16 +24,16 @@ const DriverView = (props) => {
                 }}
             >
             </div>
+            <CameraView cameraName="The Camera" cameraURL="google.com"/>
             </>
         }
         middle = {
             <>
-            <CameraView cameraName="The Camera" cameraURL="google.com"/>
             </>
         }
         right = {
             <>
-            <GridPlacement selectedNode = {props.dataMap.get("selectedNode")}/>
+                <Field />
             </>
         }
         
