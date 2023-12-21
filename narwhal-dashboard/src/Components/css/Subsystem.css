@@ -1,0 +1,17 @@
+.Green {
+    background-color: lime;
+}
+
+.Red {
+    background-color: red;
+}
+
+.displayBox {
+    width: 50%;
+}
+
+.display {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}

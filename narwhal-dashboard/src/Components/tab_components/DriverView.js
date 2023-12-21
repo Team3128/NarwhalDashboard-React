@@ -11,7 +11,7 @@ const DriverView = (props) => {
     return <DashboardBase leftWidth = {40} middleWidth = {0} rightWidth = {60}
         left = {
             <>
-            <Battery voltage = {props.dataMap.get("voltage").toFixed(10)} matchTime = {Number(props.dataMap.get("time")).toFixed(0)} robotState = {props.robotMatchState}/>
+            <Battery voltage = {props.dataMap.get("voltage").toFixed(2)} matchTime = {Number(props.dataMap.get("time")).toFixed(0)} robotState = {props.robotMatchState}/>
             <div
                 className="flexbox column"
                 style={{

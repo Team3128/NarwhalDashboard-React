@@ -14,6 +14,7 @@ import Tabs from "./Components/tab_components/Tabs";
 import {activeTab} from "./Components/tab_components/Tabs"
 import DriverView from "./Components/tab_components/DriverView";
 import AutoSelect from "./Components/tab_components/AutoSelect";
+import Debug from "./Components/tab_components/Debug"
 
 
 
@@ -142,7 +143,7 @@ function App() {
 
             {(activeTab == "auto") && <AutoSelect  dataMap = {dataMap} socket = {socket}/>}
             
-            {(activeTab == "debug") && <p>Someone make this</p>}
+            {(activeTab == "debug") && <Debug socket = {socket} testResult = {dataMap}/>}
 
             </div>
     );

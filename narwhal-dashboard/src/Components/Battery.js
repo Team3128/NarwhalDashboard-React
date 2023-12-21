@@ -47,7 +47,7 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
     //The gauge object will handle the drawing of the gauge. We are teling it where to draw the gauge and
     //setting some options on how it should look.
     useEffect(() => {
-        battGauge = makeGauge('batt_gauge', 160, 15, [0,3,6,9,12,15], 3, [
+        battGauge = makeGauge('batt_gauge', 160, 0, 15, [0,3,6,9,12,15], 3, [
             {from:  0, to:  8, color: "#d60000"},
             {from:  8, to: 12, color: "#efdb00"},
             {from: 12, to: 15, color: "#41c603"}
@@ -61,6 +61,7 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
     //of the gauge and then draw it.
     useEffect(() => {
         battGauge.value = voltage;
+        console.log(voltage);
         battGauge.draw();
     }, [voltage])
 

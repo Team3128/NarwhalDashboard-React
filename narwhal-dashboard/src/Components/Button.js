@@ -16,6 +16,7 @@ import './css/AutoSelector.css';
  * How To Use: 
  * Here are the props you can pass to this component:
  * name: The name of the button
+ * display: The text displayed by the button
  * socket: The websocket connection in App.js
  */
 function Button(props) {
@@ -23,7 +24,6 @@ function Button(props) {
 
     useEffect(()=> {
         if (props.socket != null) {
-            console.log("button:" + props.name + ":" + state);
             props.socket.send("button:" + props.name + ":" + state);
         }
     }, [state])
@@ -31,7 +31,7 @@ function Button(props) {
     return (
         //todo change this to look nice
         <button onPointerDown = {()=> setState(true)} onPointerUp = {()=> setState(false)}>
-            EXAMPLE BUTTON
+            {props.display}
         </button>
     );
 }
