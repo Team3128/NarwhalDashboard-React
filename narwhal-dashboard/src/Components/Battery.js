@@ -101,7 +101,7 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
                     <font id="match_time" style={{
                         fontSize: "60pt",
                         lineHeight: "64pt"
-                    }}>{matchTime+"s"}</font>
+                    }}>{Math.floor(matchTime / 60)+":" + (matchTime % 60).toLocaleString('en-US', {minimumIntegerDigits:2,useGrouping:false}) + "s"}</font>
                     <br/>
                     <font style={{
                         fontSize: "1.2vw",
