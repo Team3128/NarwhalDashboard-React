@@ -1,39 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './css/Backgrounds.css';
-
-//import useRef and useEffect from react
-import {useState} from 'react';
-
 import './css/BasicLayoutStyles.css';
-import {send} from '../RobotConnection/SocketManager';
+import { send } from '../RobotConnection/SocketManager';
 import './css/AutoSelector.css';
 
-/**
- * Used to make a button that sends its state to the robot
- * Button creates a button element that has a state variable returning true when the button is pressed and
- * false when released
- * 
- * How To Use: 
- * Here are the props you can pass to this component:
- * name: The name of the button
- * display: The text displayed by the button
- * socket: The websocket connection in App.js
- */
 function Button(props) {
-    const [state, setState] = useState(false);  //Button state
+  const [state, setState] = useState(false); // Button state
 
-    useEffect(()=> {
-        if (props.socket != null) {
-            props.socket.send("button:" + props.name + ":" + state);
-        }
-    }, [state])
+  useEffect(() => {
+    if (props.socket != null) {
+      props.socket.send("button:" + props.name + ":" + state);
+    }
+  }, [state]);
 
-    return (
-        //todo change this to look nice
-        <button onPointerDown = {()=> setState(true)} onPointerUp = {()=> setState(false)}>
-            {props.display}
-        </button>
-    );
+  const buttonClassName = state ? 'pressed' : 'released';
+
+  return (
+    <button
+      className={buttonClassName}
+      onPointerDown={() => setState(true)}
+      onPointerUp={() => setState(false)}
+    >
+      {props.display}
+    </button>
+  );
 }
+
+Button.propTypes = {
+  name: PropTypes.string.isRequired,
+  display: PropTypes.string.isRequired,
+  socket: PropTypes.object,
+};
 
 export default Button;
