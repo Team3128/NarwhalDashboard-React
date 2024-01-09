@@ -6,6 +6,10 @@
     background-color: red;
 }
 
+.Yellow {
+    background-color: yellow;
+}
+
 .displayBox {
     width: 50%;
 }
@@ -14,4 +18,21 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+}
+
+Button {
+    background-color: #072682;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    margin-top: 5px;
+    border-color: transparent;
+    color: white;
+    overflow: hidden;
+    border-radius: 12px;
+    justify-content: center;
+    flex-direction: row;
+    padding: 1vw;
+    align-content: center;
+    width: 100%;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import {useState} from 'react';
 
 import Button from './Button';
 
@@ -15,9 +16,11 @@ import './css/Subsystem.css'
  * socket: The websocket connection in App.js
  */
 const Subsystem = (props) => {
+    // PASS FAIL RUNNING
+    const [result, setResult] = useState(props.testResult.get(props.name));
     return <>
         <div className = "display">
-            <div className = {`displayBox ${props.testResult.get(props.name) ? "Green" : "Red"}`}></div>
+            <div className = {`displayBox ${result == "PASS" ? "Green" : (result == "FAIL" ? "Red" : "Yellow")}`}></div>
             <img className = "displayBox" src = {process.env.PUBLIC_URL + "/" + props.name + '.png'}></img>
         </div>
         <Button socket = {props.socket} name = {props.name} display = {"Run " + props.name + " Test"}></Button>
