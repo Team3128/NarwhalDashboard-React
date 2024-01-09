@@ -1,30 +1,47 @@
 .Green {
     background-color: lime;
+    width: 100%;
+    height: 10px;
 }
 
 .Red {
     background-color: red;
+    width: 100%;
+    height: 10px;
 }
 
 .Yellow {
     background-color: yellow;
+    width: 100%;
+    height: 10px;
+    animation: blinker 1s linear infinite;
 }
 
-.displayBox {
-    width: 50%;
+@keyframes blinker {
+    50% {
+        background-color: red;
+    }
+}
+
+.debug {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ag {
+    width: 5px;
 }
 
 .display {
+    height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
 }
 
 Button {
     background-color: #072682;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
     margin-top: 5px;
     border-color: transparent;
     color: white;

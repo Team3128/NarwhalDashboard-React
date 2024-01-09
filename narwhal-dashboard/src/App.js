@@ -127,9 +127,7 @@ function App() {
             setRobotMatchState(RobotStates.TELEOP);
         }
     
-        // console.log(dataMap);
     }, [jsonData]);
-    console.log(dataMap);
     return (
         <div id = "base">
             <Header connect={connectToRobot} disconnect={disconnectFromRobot} connectionStatus={socketConnected}/>

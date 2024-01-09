@@ -18,12 +18,16 @@ import './css/Subsystem.css'
 const Subsystem = (props) => {
     // PASS FAIL RUNNING
     const [result, setResult] = useState(props.testResult.get(props.name));
+    console.log("result: " + result);
+    // setResult("PASS");
     return <>
+    <div className = "debug">
         <div className = "display">
-            <div className = {`displayBox ${result == "PASS" ? "Green" : (result == "FAIL" ? "Red" : "Yellow")}`}></div>
-            <img className = "displayBox" src = {process.env.PUBLIC_URL + "/" + props.name + '.png'}></img>
+            <div className = {`displayBox ${result === "PASS" ? "Green" : (result === "FAIL" ? "Red" : "Yellow")}`}></div>
+            <img className = "displayBox ag" src = {process.env.PUBLIC_URL + "/" + props.name + '.png'}></img>
         </div>
         <Button socket = {props.socket} name = {props.name} display = {"Run " + props.name + " Test"}></Button>
+    </div>
     </>
 };
 
