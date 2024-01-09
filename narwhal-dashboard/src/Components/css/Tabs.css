@@ -1,10 +1,14 @@
+
 .flexRowTabs {
     display: flex;
     flex-direction: row;
+    background-color: #e1e1e1;
 }
 
 .flexRowTabs div {
     width: 33.333333%;
+    margin: 5px;
+    border-radius: 5px;
     text-align: center;
 }
 
@@ -13,5 +17,5 @@
 }
 
 .active {
-    background-color: green;
+    background-color: #0095c7;
 }
