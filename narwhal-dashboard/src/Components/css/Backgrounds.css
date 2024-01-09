@@ -2,6 +2,10 @@ body {
     background: #efefef;
 }
 
+body.dark-mode {
+    background: #1c1c1d;
+}
+
 .white-black {
     background: white;
     color: black;

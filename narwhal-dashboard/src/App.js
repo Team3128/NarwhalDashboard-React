@@ -39,6 +39,9 @@ function App() {
     //This state stores the socket
     const [socket, setSocket] = useState(null);
 
+    //This state stores whether Dark Mode is enabled
+    const [darkMode, setDarkMode] = useState(true);
+
     //This state stores whether or not the socket is currently connected
     const [socketConnected, setSocketConnected] = useState(false);
 
@@ -62,6 +65,9 @@ function App() {
     const handleTabDebug = () => {
         setActiveTab("debug")
     }
+    const toggleDarkMode = ()=>{
+        setDarkMode(!darkMode);
+    }
 
     //Todo move this into the dataMap
     const gridRef = useRef(null);
@@ -77,6 +83,15 @@ function App() {
             socket.close();
         }
     }
+
+    useEffect(()=>{
+        if (darkMode) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+
+        }
+    }, [darkMode]);
 
     useEffect(() => {
 
@@ -143,6 +158,7 @@ function App() {
             
             {(activeTab == "debug") && <Debug socket = {socket} testResult = {dataMap}/>}
 
+            <button onClick={toggleDarkMode}>toggleDarkMode</button>
             </div>
     );
 
