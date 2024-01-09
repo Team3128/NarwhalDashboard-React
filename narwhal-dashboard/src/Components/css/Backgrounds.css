@@ -3,29 +3,56 @@ body {
 }
 
 body.dark-mode {
-    background: #1c1c1d;
+    background: #0d0112;
 }
-
+.white {
+    background:white;
+    color: black;
+}
 .white-black {
     background: white;
     color: black;
     border: 3px solid black;
 }
+.grey {
+    background: #b0b0b0;
+    color: white;
+}
+.grey.dark-mode {
+    background: #3a0c33;
+    color: white;
+}
+.white.dark-mode {
+    background: #22092C;
+    color: white;
+}
 .navy {
     background: #1b1464;
     color: white;
+}
+.navy.dark-mode {
+    background: #22092C;
 }
 .royal {
     background: #072682;
     color: white;
 }
+.royal.dark-mode {
+    background: #872341;
+}
 .sapphire {
     background: #0068a5;
     color: white;
 }
+.sapphire.dark-mode {
+    background: #BE3144;
+}
 .pacific {
     background: #0085b2;
     color: white;
+}
+.pacific.dark-mode {
+    background: #F05941;
 }
 
 .red {
