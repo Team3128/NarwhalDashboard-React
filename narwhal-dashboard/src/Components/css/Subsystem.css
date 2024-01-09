@@ -27,10 +27,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.ag {
-    width: 5px;
+.sub {
+    width: 60%;
+    margin: auto;
 }
 
 .display {
