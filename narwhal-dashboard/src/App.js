@@ -2,6 +2,7 @@ import React from "react";
 import {useState, useRef, useEffect} from "react";
 import io, { connect } from 'socket.io-client';
 import config from './config.json';
+import './App.css';
 
 import DashboardBase from './DashboardBase';
 import Battery from './Components/Battery';
@@ -40,7 +41,7 @@ function App() {
     const [socket, setSocket] = useState(null);
 
     //This state stores whether Dark Mode is enabled
-    const [darkMode, setDarkMode] = useState(true);
+    const [darkMode, setDarkMode] = useState(false);
 
     //This state stores whether or not the socket is currently connected
     const [socketConnected, setSocketConnected] = useState(false);
@@ -87,6 +88,7 @@ function App() {
     useEffect(()=>{
         if (darkMode) {
             document.body.classList.add('dark-mode');
+
         } else {
             document.body.classList.remove('dark-mode');
 
@@ -158,7 +160,11 @@ function App() {
             
             {(activeTab == "debug") && <Debug socket = {socket} testResult = {dataMap}/>}
 
-            <button onClick={toggleDarkMode}>toggleDarkMode</button>
+            <div id = "toggle">
+                <input type="checkbox" id="darkmode-toggle" onChange={toggleDarkMode}/>
+                <label for="darkmode-toggle">
+                </label>
+            </div>
             </div>
     );
 
