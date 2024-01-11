@@ -26,7 +26,7 @@ const Subsystem = (props) => {
             <div className = {`displayBox ${result === "PASS" ? "Green" : (result === "FAIL" ? "Red" : "Yellow")}`}></div>
             <img className = "displayBox sub" src = {process.env.PUBLIC_URL + "/" + props.name + '.png'}></img>
         </div>
-        <Button socket = {props.socket} name = {props.name} display = {"Run " + props.name + " Test"}></Button>
+        <Button className="navy" socket = {props.socket} name = {props.name} display = {"Run " + props.name + " Test"}></Button>
     </div>
     </>
 };

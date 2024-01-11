@@ -35,6 +35,14 @@ disconnectedDataMap.set("time", 0);
 disconnectedDataMap.set("auto", ["Test"]);
 disconnectedDataMap.set("selectedNode", -1);
 
+function updateDarkMode(className, add) {
+    let elements = document.getElementsByClassName(className);
+    for (let i = 0; i < elements.length; i++) {
+        if (add) elements[i].classList.add('dark-mode');
+        else elements[i].classList.remove('dark-mode');
+    }
+}
+
 function App() {
 
     //This state stores the socket
@@ -86,12 +94,17 @@ function App() {
     }
 
     useEffect(()=>{
+        updateDarkMode('navy', darkMode);
+        updateDarkMode('white', darkMode);
+        updateDarkMode('royale', darkMode);
+        updateDarkMode('sapphire', darkMode);
+        updateDarkMode('pacific', darkMode);
+        updateDarkMode('grey', darkMode);
         if (darkMode) {
             document.body.classList.add('dark-mode');
 
         } else {
             document.body.classList.remove('dark-mode');
-
         }
     }, [darkMode]);
 
