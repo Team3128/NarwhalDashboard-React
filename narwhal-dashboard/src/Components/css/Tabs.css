@@ -5,6 +5,10 @@
     background-color: #e1e1e1;
 }
 
+.flexRowTabs.dark-mode {
+    background-color: #2d293e;
+}
+
 .flexRowTabs div {
     width: 33.333333%;
     margin: 5px;

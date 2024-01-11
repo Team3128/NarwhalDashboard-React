@@ -100,6 +100,7 @@ function App() {
         updateDarkMode('sapphire', darkMode);
         updateDarkMode('pacific', darkMode);
         updateDarkMode('grey', darkMode);
+        updateDarkMode('flexRowTabs', darkMode);
         if (darkMode) {
             document.body.classList.add('dark-mode');
 
