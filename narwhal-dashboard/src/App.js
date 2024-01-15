@@ -96,18 +96,21 @@ function App() {
     useEffect(()=>{
         updateDarkMode('navy', darkMode);
         updateDarkMode('white', darkMode);
-        updateDarkMode('royale', darkMode);
+        updateDarkMode('royal', darkMode);
         updateDarkMode('sapphire', darkMode);
         updateDarkMode('pacific', darkMode);
         updateDarkMode('grey', darkMode);
         updateDarkMode('flexRowTabs', darkMode);
+        updateDarkMode('debug', darkMode);
+        updateDarkMode('released', darkMode);
+        updateDarkMode('pressed', darkMode);
         if (darkMode) {
             document.body.classList.add('dark-mode');
 
         } else {
             document.body.classList.remove('dark-mode');
         }
-    }, [darkMode]);
+    }, [darkMode, activeTab]);
 
     useEffect(() => {
 
@@ -168,11 +171,11 @@ function App() {
 
             <div><Tabs driverView = {handleTabDriverView} auto = {handleTabAuto} debug = {handleTabDebug}/></div>
             
-            {(activeTab == "driverView") && (<DriverView dataMap = {dataMap} robotMatchState = {robotMatchState} socket = {socket}/>)}
+            {(activeTab === "driverView") && (<DriverView dataMap = {dataMap} robotMatchState = {robotMatchState} socket = {socket}/>)}
 
-            {(activeTab == "auto") && <AutoSelect  dataMap = {dataMap} socket = {socket}/>}
+            {(activeTab === "auto") && <AutoSelect  dataMap = {dataMap} socket = {socket}/>}
             
-            {(activeTab == "debug") && <Debug socket = {socket} testResult = {dataMap}/>}
+            {(activeTab === "debug") && <Debug socket = {socket} testResult = {dataMap}/>}
 
             <div id = "toggle">
                 <input type="checkbox" id="darkmode-toggle" onChange={toggleDarkMode}/>

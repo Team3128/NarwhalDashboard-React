@@ -38,6 +38,10 @@
     border-radius: 12px;
 }
 
+.debug.dark-mode {
+    background-color: #282828;
+}
+
 .sub {
     width: 60%;
     margin: auto;
@@ -51,7 +55,6 @@
 }
 
 Button {
-    background-color: #072682;
     margin-top: 5px;
     border-color: transparent;
     color: white;
@@ -71,4 +74,12 @@ button.pressed {
 
 button.released {
     background-color: #072682;
+}
+
+button.pressed.dark-mode {
+    background-color: red;
+}
+
+button.released.dark-mode {
+    background-color: #872341;
 }

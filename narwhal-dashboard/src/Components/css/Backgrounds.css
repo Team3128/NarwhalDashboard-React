@@ -4,7 +4,9 @@ body {
 
 body.dark-mode {
     /* background: #010112; */
-    background-image: linear-gradient(#010112, #020628);
+    background-image: linear-gradient(#010112, #04093b);
+    width: 100vw;
+    height: 100vh;
 }
 
 
@@ -22,11 +24,11 @@ body.dark-mode {
     color: white;
 }
 .grey.dark-mode {
-    background: #3a0c33;
+    background: rgb(78, 14, 68);
     color: rgb(215, 209, 228);
 }
 .white.dark-mode {
-    background: #22092C;
+    background: #3e0624;
     color: rgb(225, 225, 225);
 }
 .navy {
