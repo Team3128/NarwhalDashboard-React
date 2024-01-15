@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import './css/Backgrounds.css';
 
 //import useRef and useEffect from react
@@ -7,6 +6,7 @@ import {useState} from 'react';
 import './css/BasicLayoutStyles.css';
 import './css/ListSelector.css';
 import './css/Buttons.css';
+
 
 
 /**
@@ -79,7 +79,11 @@ function ListSelector(props) {
             })}
         </div>
     </div>
-    <img className="list_sel_img" src={props.imageSrc} />
+    <img 
+        className={'list_sel_img full ' + (selectedItem ? 'showBackground' : '')}
+        src={props.imageSrc}
+        alt={props.imageSrc}
+    />
     </div>
     );
 }

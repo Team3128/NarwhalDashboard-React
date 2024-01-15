@@ -104,6 +104,7 @@ function App() {
         updateDarkMode('debug', darkMode);
         updateDarkMode('released', darkMode);
         updateDarkMode('pressed', darkMode);
+        updateDarkMode('showBackground', darkMode);
         if (darkMode) {
             document.body.classList.add('dark-mode');
 
