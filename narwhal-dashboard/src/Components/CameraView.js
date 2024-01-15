@@ -17,7 +17,7 @@ function CameraView({cameraURL = "", cameraName = "Camera"}) {
 
     return (
         <div className="flexbox column squash limelight_info">    
-            <div className="container limelight_container">
+            <div className="container limelight_container royal">
                 <div id="limelight_conn_button" onClick={() => setCamConnected(!camConnected)} className={`button conn_button ${camConnected ? "green" : "red"}`}>
                     <p className="conn_button_text" id="limelight_conn_button_text">
                         {camConnected ? `Hide ${cameraName} Stream` : `Show ${cameraName} Stream`}

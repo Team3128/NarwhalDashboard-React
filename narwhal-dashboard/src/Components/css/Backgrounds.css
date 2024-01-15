@@ -2,26 +2,62 @@ body {
     background: #efefef;
 }
 
+body.dark-mode {
+    /* background: #010112; */
+    background-image: linear-gradient(#01010b, #020217, #04043b);
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.white {
+    background:white;
+    color: black;
+}
 .white-black {
     background: white;
     color: black;
     border: 3px solid black;
 }
+.grey {
+    background: #b0b0b0;
+    color: white;
+}
+.grey.dark-mode {
+    background: rgb(78, 14, 68);
+    color: rgb(215, 209, 228);
+}
+.white.dark-mode {
+    background: #3e0624;
+    color: rgb(225, 225, 225);
+}
 .navy {
     background: #1b1464;
     color: white;
+}
+.navy.dark-mode {
+    background: #22092C;
 }
 .royal {
     background: #072682;
     color: white;
 }
+.royal.dark-mode {
+    background: #872341;
+}
 .sapphire {
     background: #0068a5;
     color: white;
 }
+.sapphire.dark-mode {
+    background: #BE3144;
+}
 .pacific {
     background: #0085b2;
     color: white;
+}
+.pacific.dark-mode {
+    background: #F05941;
 }
 
 .red {

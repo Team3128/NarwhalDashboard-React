@@ -61,27 +61,25 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
     //of the gauge and then draw it.
     useEffect(() => {
         battGauge.value = voltage;
+        console.log(voltage);
         battGauge.draw();
     }, [voltage])
 
     return (
-        <div className="flexbox row"
+        <div className="flexbox row white"
             style={{
                 alignItems: "center",
                 flexGrow: 0,
                 marginRight: "25px",
                 padding: "8px",
-                background: "white",
                 borderRadius: "20px"   
             }}>
-            <div id="battery"
+            <div id="battery" className="grey"
                 style = {{
                     flex: "0 0 160px",
                     height: "160px",
-                    background: "#b0b0b0",
                     borderRadius: "14px",
                     padding: "8px",
-                    color: "white",
                     textAlign: "center",
                     verticalAlign: "middle"
                 }}>
@@ -100,14 +98,14 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
                     <font id="match_time" style={{
                         fontSize: "60pt",
                         lineHeight: "64pt"
-                    }}>{matchTime+"s"}</font>
+                    }}>{Math.floor(matchTime / 60)+":" + (matchTime % 60).toLocaleString('en-US', {minimumIntegerDigits:2,useGrouping:false}) + "s"}</font>
                     <br/>
                     <font style={{
                         fontSize: "1.2vw",
                         lineHeight: "20pt"
                     }}>Match Time Remaining</font>
                     <br/>
-                    <div id="match_state" className={robotState.classList.join(" ")+ " flexbox"}
+                    <div id="match_state" className={robotState.classList.join(" ")+ " flexbox grey"}
                     style={{
                         alignItems: "center",
                         flexGrow: 0,
@@ -117,7 +115,7 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
                         borderRadius: "16px",
                         display: "inline-block"
                     }}>
-                        <font id="match_state_text" style={{
+                        <font id="match_state_text" className="grey" style={{
                             fontSize: "32pt",
                             fontWeight: "900"
                         }}>{robotState.name}</font>

@@ -1,0 +1,85 @@
+.Green {
+    background-color: lime;
+    width: 100%;
+    height: 50px;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.Red {
+    background-color: red;
+    width: 100%;
+    height: 50px;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.Yellow {
+    background-color: yellow;
+    width: 100%;
+    height: 50px;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        background-color: red;
+    }
+}
+
+.debug {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:#e3e3e3;
+    border-radius: 12px;
+}
+
+.debug.dark-mode {
+    background-color: #282828;
+}
+
+.sub {
+    width: 60%;
+    margin: auto;
+}
+
+.display {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+Button {
+    margin-top: 5px;
+    border-color: transparent;
+    color: white;
+    overflow: hidden;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    justify-content: center;
+    flex-direction: row;
+    padding: 1vw;
+    align-content: center;
+    width: 100%;
+}
+
+button.pressed {
+    background-color: #041340;
+}
+
+button.released {
+    background-color: #072682;
+}
+
+button.pressed.dark-mode {
+    background-color: red;
+}
+
+button.released.dark-mode {
+    background-color: #872341;
+}
