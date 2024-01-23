@@ -33,7 +33,7 @@ const DriverView = (props) => {
         }
         right = {
             <>
-                <Field />
+                <Field robotX = {props.dataMap.get("robotX")} robotY = {props.dataMap.get("robotY")} robotYaw = {props.dataMap.get("robotYaw")}/>
             </>
         }
         
