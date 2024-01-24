@@ -34,6 +34,9 @@ disconnectedDataMap.set("voltage", 0);
 disconnectedDataMap.set("time", 0);
 disconnectedDataMap.set("auto", ["Test"]);
 disconnectedDataMap.set("selectedNode", -1);
+disconnectedDataMap.set("robotX", 0);
+disconnectedDataMap.set("robotY", 0);
+disconnectedDataMap.set("robotYaw", 0);
 
 function updateDarkMode(className, add) {
     let elements = document.getElementsByClassName(className);

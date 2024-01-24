@@ -7,19 +7,18 @@ import './css/Field.css';
 import field from '../assets/field.png';
 import robot from '../assets/robot.png';
 
+const robotWidth = 0.86;
+
 const Field = (props) => {
     const [pixelsPerMeter, setPixelsPerMeter] = useState(null);
     const [fieldHeight, setFieldHeight] = useState(null);
     // TODO: update to actual data
-    const [robotX, setRobotX] = props.robotX;
-    const [robotY, setRobotY] = props.robotY;
-    const [robotYaw, setRobotYaw] = props.robotYaw;
-    const [robotWidth, setRobotWidth] = 0.86;
-    // useEffect(()=>{
-    //     setPixelsPerMeter(document.getElementById('field').width / 16.4846);
-    //     setFieldHeight(document.getElementById('field').height);
-        // console.log(fieldHeight - (robotY * pixelsPerMeter) + "px");
-    // });
+    useEffect(()=>{ setTimeout(() => { 
+        setPixelsPerMeter(document.getElementById('field').width / 16.4846);
+        setFieldHeight(document.getElementById('field').height);
+        console.log(fieldHeight - (props.robotY * pixelsPerMeter) + "px");
+      }, [document.getElementById('field')]);
+    });
     // const robotX = 5, robotY = 2, robotDir = 45;
 
     // console.log("ppm: " + pixelsPerMeter);
@@ -31,9 +30,9 @@ const Field = (props) => {
             <img id = "robot" src = {robot} style = {{
                 position: "relative",
                 width: robotWidth * pixelsPerMeter + "px",
-                left: (robotX - robotWidth / 2) * pixelsPerMeter + "px",
-                top: fieldHeight - ((robotY + robotWidth / 2) * pixelsPerMeter) + "px",
-                transform: "rotate(" + -robotYaw + "deg)"
+                left: (props.robotX - robotWidth / 2) * pixelsPerMeter + "px",
+                top: fieldHeight - ((props.robotY + robotWidth / 2) * pixelsPerMeter) + "px",
+                transform: "rotate(" + - props.robotYaw + "deg)"
             }}></img>
         </>
     );
