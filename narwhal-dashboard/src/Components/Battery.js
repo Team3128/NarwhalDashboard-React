@@ -1,12 +1,11 @@
 import React from 'react';
 import './css/BasicLayoutStyles.css';
-import RadialGauge from 'canvas-gauges';
 import makeGauge from '../mins/gaugeMaker.js';
 
 import './css/Backgrounds.css';
 
 //import useRef and useEffect from react
-import {useRef, useEffect} from 'react';
+import {useEffect} from 'react';
 
 
 //EXPLANATION:
@@ -61,7 +60,7 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
     //of the gauge and then draw it.
     useEffect(() => {
         battGauge.value = voltage;
-        console.log(voltage);
+        // console.log(voltage);
         battGauge.draw();
     }, [voltage])
 

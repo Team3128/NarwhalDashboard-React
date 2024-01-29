@@ -22,10 +22,6 @@ const Tabs = (props) => {
         props.debug();
     }
 
-    useEffect(()=> {
-        
-    }, [activeTab])
-
     return (
         <>
         <div className="flexRowTabs">

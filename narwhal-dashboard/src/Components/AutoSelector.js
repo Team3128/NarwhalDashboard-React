@@ -6,7 +6,6 @@ import {useState} from 'react';
 
 import './css/BasicLayoutStyles.css';
 import ListSelector from './ListSelector';
-import {send} from '../RobotConnection/SocketManager';
 import './css/AutoSelector.css';
 
 function AutoSelector(props) {

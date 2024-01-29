@@ -68,18 +68,26 @@ Button {
     width: 100%;
 }
 
-button.pressed {
+button {
     background-color: #041340;
 }
 
-button.released {
+button:hover {
     background-color: #072682;
 }
 
-button.pressed.dark-mode {
+button:active {
+    background-color: #0e40d4;
+}
+
+button.dark-mode {
     background-color: red;
 }
 
-button.released.dark-mode {
+button.dark-mode:hover {
     background-color: #872341;
+}
+
+button.dark-mode:active {
+    background-color: #4e1f2d;
 }

@@ -1,18 +1,11 @@
 import React from "react";
-import {useState, useRef, useEffect} from "react";
-import io, { connect } from 'socket.io-client';
+import {useState, useEffect} from "react";
 import config from './config.json';
 import './App.css';
 
-import DashboardBase from './DashboardBase';
-import Battery from './Components/Battery';
-import AutoSelector from './Components/AutoSelector';
-import CameraView from './Components/CameraView';
 import Header from './Components/Header';
 import { RobotStates } from './Components/Battery';
-import Button from "./Components/Button";
 import Tabs from "./Components/tab_components/Tabs";
-import {activeTab} from "./Components/tab_components/Tabs"
 import DriverView from "./Components/tab_components/DriverView";
 import AutoSelect from "./Components/tab_components/AutoSelect";
 import Debug from "./Components/tab_components/Debug"
@@ -37,14 +30,6 @@ disconnectedDataMap.set("selectedNode", -1);
 disconnectedDataMap.set("robotX", 0);
 disconnectedDataMap.set("robotY", 0);
 disconnectedDataMap.set("robotYaw", 0);
-
-function updateDarkMode(className, add) {
-    let elements = document.getElementsByClassName(className);
-    for (let i = 0; i < elements.length; i++) {
-        if (add) elements[i].classList.add('dark-mode');
-        else elements[i].classList.remove('dark-mode');
-    }
-}
 
 function App() {
 
@@ -81,10 +66,6 @@ function App() {
         setDarkMode(!darkMode);
     }
 
-    //Todo move this into the dataMap
-    const gridRef = useRef(null);
-
-
     const connectToRobot = () => {
         //Connect to the web socket
         setSocket(new WebSocket(config.robotIp));
@@ -97,23 +78,14 @@ function App() {
     }
 
     useEffect(()=>{
-        updateDarkMode('navy', darkMode);
-        updateDarkMode('white', darkMode);
-        updateDarkMode('royal', darkMode);
-        updateDarkMode('sapphire', darkMode);
-        updateDarkMode('pacific', darkMode);
-        updateDarkMode('grey', darkMode);
-        updateDarkMode('flexRowTabs', darkMode);
-        updateDarkMode('debug', darkMode);
-        updateDarkMode('released', darkMode);
-        updateDarkMode('pressed', darkMode);
-        updateDarkMode('showBackground', darkMode);
-        if (darkMode) {
-            document.body.classList.add('dark-mode');
-
-        } else {
-            document.body.classList.remove('dark-mode');
+        const elems = document.body.getElementsByTagName("*");
+        for (let i = 0; i < elems.length; i++) {
+            if (darkMode) elems[i].classList.add('dark-mode');
+            else elems[i].classList.remove('dark-mode');
         }
+
+        if (darkMode) document.body.classList.add('dark-mode');
+        else document.body.classList.remove('dark-mode');
     }, [darkMode, activeTab]);
 
     useEffect(() => {
@@ -148,6 +120,10 @@ function App() {
     useEffect(()=> {
         //Update JSON
         for (const item of Object.keys(jsonData)) {
+            if (item == "Message") {
+                console.log(jsonData[item]);
+                continue;
+            }
             dataMap.set(item, jsonData[item])
         }
     
@@ -169,7 +145,6 @@ function App() {
     return (
         <div id = "base">
             <Header connect={connectToRobot} disconnect={disconnectFromRobot} connectionStatus={socketConnected}/>
-
 
             {!socketConnected && <div id="cover" className="cover"></div>}
 

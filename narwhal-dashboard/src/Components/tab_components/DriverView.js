@@ -2,9 +2,7 @@ import React from 'react';
 
 import DashboardBase from '../../DashboardBase';
 import Battery from '../Battery';
-import AutoSelector from '../AutoSelector';
 import CameraView from '../CameraView';
-import Button from '../Button';
 import Field from '../Field';
 
 const DriverView = (props) => {
