@@ -15,12 +15,18 @@ const Debug = (props) => {
     return <DashboardBase leftWidth = {45} middleWidth = {10} rightWidth = {45}
         left = {
             <>
-                <Subsystem socket = {props.socket} name = {"Elevator"} testResult = {props.testResult}/>
+            <div className='side'>
+                <Subsystem socket = {props.socket} name = {"Intake"} testResult = {props.testResult}/>
+                <Subsystem socket = {props.socket} name = {"Shooter"} testResult = {props.testResult}/>
+            </div>
             </>
         }
         right = {
             <>
+            <div className='side'>
+                <Subsystem socket = {props.socket} name = {"Manipulator"} testResult = {props.testResult}/>
                 <Subsystem socket = {props.socket} name = {"Elevator"} testResult = {props.testResult}/>
+            </div>
             </>
         }
         
