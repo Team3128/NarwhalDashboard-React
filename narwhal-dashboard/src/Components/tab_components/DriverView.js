@@ -4,6 +4,7 @@ import DashboardBase from '../../DashboardBase';
 import Battery from '../Battery';
 import CameraView from '../CameraView';
 import Field from '../Field';
+import Status from '../Status'
 
 const DriverView = (props) => {
     return <DashboardBase leftWidth = {40} middleWidth = {0} rightWidth = {60}
@@ -22,7 +23,13 @@ const DriverView = (props) => {
                 }}
             >
             </div>
-            <CameraView cameraName="The Camera" cameraURL="google.com"/>
+            {/* <CameraView cameraName="The Camera" cameraURL="google.com"/> */}
+            <div className='flexbox row'>
+                <Status subsystem='swerve' connected='true'/>
+                <Status subsystem='intake' connected='true'/>
+                <Status subsystem='shooter' connected='true'/>
+                <Status subsystem='climber' connected='true'/>
+            </div>
             </>
         }
         middle = {

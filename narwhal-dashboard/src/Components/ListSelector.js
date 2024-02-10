@@ -28,7 +28,7 @@ function ListSelector(props) {
     const [selectedItem, setSelectedItem] = useState(null);
     const [isMenuToggled, setIsMenuToggled] = useState(false);
 
-    return (
+    return ( 
         <div className = "list_sel">
         <div className="royal flexbox column list_sel_info">
             <div className="list_sel_box">

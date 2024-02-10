@@ -20,7 +20,7 @@ function AutoSelector(props) {
                     selectAuto(item);
                 }}
                 //Image must be in the public folder to change on runtime
-                imageSrc = {selectedAuto != null ? process.env.PUBLIC_URL + "/auto_imgs/" + selectedAuto + '.png' : ""}
+                imageSrc = {selectedAuto != null ? process.env.PUBLIC_URL + "/auto_imgs/" + selectedAuto + '.gif' : ""}
             />
     );
 }

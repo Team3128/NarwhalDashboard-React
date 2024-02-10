@@ -1,0 +1,15 @@
+.statusDisplay {
+    display: flex;
+    width: 125px;
+    height: 50px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.statusGreen {
+    background-color: green;
+}
+.statusRed {
+    background-color: red;
+}
