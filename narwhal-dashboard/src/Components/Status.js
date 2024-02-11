@@ -7,8 +7,8 @@ function Status(props) {
     const subsystem = props.subsystem;
     const connected = props.connected;
     return <>
-        <div className={`statusDisplay ${props.connected === 'true' ? "statusGreen" : "statusRed"}`}>
-            <h2>{subsystem}</h2>
+        <div className={`statusDisplay ${props.connected === 'RUNNING' ? "statusGreen" : (props.connected == 'PARTIALLY_RUNNING' ? "statusYellow" : "statusRed")}`}>
+            <h3 style={{color:'white'}}>{subsystem}</h3>
         </div>
     </>
 }
