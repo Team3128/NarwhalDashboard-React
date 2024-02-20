@@ -9,10 +9,11 @@ import ListSelector from './ListSelector';
 import './css/AutoSelector.css';
 
 function AutoSelector(props) {
-    const [selectedAuto, selectAuto] = useState(null);
+    const [selectedAuto, selectAuto] = useState(props.selectedAuto);
 
     return (
             <ListSelector
+                defaultSelected={selectedAuto}
                 itemType="Auto"
                 items={props.autoPrograms}
                 onSelectItem={(item) => {

@@ -25,7 +25,7 @@ import './css/Buttons.css';
 
 function ListSelector(props) {
 
-    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedItem, setSelectedItem] = useState(props.defaultSelected);
     const [isMenuToggled, setIsMenuToggled] = useState(false);
 
     return ( 

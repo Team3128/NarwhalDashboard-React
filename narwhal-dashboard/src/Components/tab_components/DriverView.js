@@ -24,21 +24,31 @@ const DriverView = (props) => {
             >
             </div>
             {/* <CameraView cameraName="The Camera" cameraURL="google.com"/> */}
-            <div className='flexbox column' 
-                style={{
-                    background: 'white',
-                    borderRadius: '15px',
-                    padding: '5px',
-                    width: '50%'
-                }}
-            >
-                <div className='flexbox row'>
-                    <Status subsystem='Module 0' connected={props.dataMap.get('Module0')}/>
-                    <Status subsystem='Module 1' connected={props.dataMap.get('Module1')}/>
+            <div className = 'flexbox row'>
+                <div className='flexbox column' 
+                    style={{
+                        background: 'white',
+                        borderRadius: '15px',
+                        padding: '5px',
+                        width: '50%'
+                    }}
+                >
+                    <div className='flexbox row'>
+                        <Status subsystem='Module 0' connected={props.dataMap.get('Module0')}/>
+                        <Status subsystem='Module 1' connected={props.dataMap.get('Module1')}/>
+                    </div>
+                    <div className='flexbox row'>
+                        <Status subsystem='Module 2' connected={props.dataMap.get('Module2')}/>
+                        <Status subsystem='Module 3' connected={props.dataMap.get('Module3')}/>
+                    </div>
                 </div>
-                <div className='flexbox row'>
-                    <Status subsystem='Module 2' connected={props.dataMap.get('Module2')}/>
-                    <Status subsystem='Module 3' connected={props.dataMap.get('Module3')}/>
+                <div style={{
+                        background: 'white',
+                        borderRadius: '15px',
+                        padding: '5px',
+                        width: '25%'
+                    }}>
+                    <Status subsystem='Intake' connected={props.dataMap.get('Intake')}></Status>
                 </div>
             </div>
             </>
