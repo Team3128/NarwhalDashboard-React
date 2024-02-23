@@ -4,7 +4,6 @@ import config from './config.json';
 import './App.css';
 
 import Header from './Components/Header';
-import { RobotStates } from './Components/Battery';
 import Tabs from "./Components/tab_components/Tabs";
 import DriverView from "./Components/tab_components/DriverView";
 import AutoSelect from "./Components/tab_components/AutoSelect";
@@ -47,9 +46,6 @@ function App() {
 
     //Map to store messages from java side
     const [dataMap, setDataMap] = useState(new Map(JSON.parse(JSON.stringify(Array.from(disconnectedDataMap)))));
-
-    //This state stores the current match state of the robot
-    const [robotMatchState, setRobotMatchState] = useState(RobotStates.DISABLED);
 
     const [activeTab, setActiveTab] = useState("driverView");
 
@@ -126,21 +122,6 @@ function App() {
             }
             dataMap.set(item, jsonData[item])
         }
-    
-        //Calculate Robot Match State
-        if(dataMap.get("time") <= 0) {
-            setRobotMatchState(RobotStates.DISABLED);
-        }
-        else if(dataMap.get("time") <= 15 && robotMatchState == RobotStates.DISABLED) {
-            setRobotMatchState(RobotStates.AUTO);
-        }
-        else if(dataMap.get("time") <= 30) {
-            setRobotMatchState(RobotStates.ENDGAME);
-        }
-        else if(dataMap.get("time") <= 135) {
-            setRobotMatchState(RobotStates.TELEOP);
-        }
-    
     }, [jsonData]);
     return (
         <div id = "base">
@@ -150,7 +131,7 @@ function App() {
 
             <div><Tabs driverView = {handleTabDriverView} auto = {handleTabAuto} debug = {handleTabDebug}/></div>
             
-            {(activeTab === "driverView") && (<DriverView dataMap = {dataMap} robotMatchState = {robotMatchState} socket = {socket}/>)}
+            {(activeTab === "driverView") && (<DriverView dataMap = {dataMap} socket = {socket}/>)}
 
             {(activeTab === "auto") && <AutoSelect  dataMap = {dataMap} socket = {socket}/>}
             

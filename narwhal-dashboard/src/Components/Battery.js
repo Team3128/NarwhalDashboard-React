@@ -5,7 +5,7 @@ import makeGauge from '../mins/gaugeMaker.js';
 import './css/Backgrounds.css';
 
 //import useRef and useEffect from react
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 
 //EXPLANATION:
@@ -38,8 +38,8 @@ const RobotStates = {
     }
 }
 
-function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.DISABLED}) {
-
+function BatteryMatchTime({voltage = 0, matchTime = 0}) {
+    const [matchState, setMatchState] = useState(RobotStates.DISABLED);
     
 
     //useEffect is called after the component is rendered. This will set up the gauge object.
@@ -63,6 +63,24 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
         // console.log(voltage);
         battGauge.draw();
     }, [voltage])
+
+    useEffect(()=> {
+
+        //Calculate Robot Match State
+        if(matchTime <= 0) {
+            setMatchState(RobotStates.DISABLED);
+        }
+        else if(matchTime <= 15 && (matchState == RobotStates.DISABLED)) {
+            setMatchState(RobotStates.AUTO);
+        }
+        else if(matchTime <= 20 && matchState == RobotStates.TELEOP) {
+            setMatchState(RobotStates.ENDGAME);
+        }
+        else if(matchTime <= 135 && matchState == RobotStates.AUTO) {
+            setMatchState(RobotStates.TELEOP);
+        }
+    
+    }, [matchTime]);
 
     return (
         <div className="flexbox row white"
@@ -104,7 +122,7 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
                         lineHeight: "20pt"
                     }}>Match Time Remaining</font>
                     <br/>
-                    <div id="match_state" className={robotState.classList.join(" ")+ " flexbox"}
+                    <div id="match_state" className={matchState.classList.join(" ")+ " flexbox"}
                     style={{
                         alignItems: "center",
                         flexGrow: 0,
@@ -117,7 +135,7 @@ function BatteryMatchTime({voltage = 0, matchTime = 0, robotState = RobotStates.
                         <font id="match_state_text" style={{
                             fontSize: "32pt",
                             fontWeight: "900"
-                        }}>{robotState.name}</font>
+                        }}>{matchState.name}</font>
                     </div>
             </div>
         </div>
