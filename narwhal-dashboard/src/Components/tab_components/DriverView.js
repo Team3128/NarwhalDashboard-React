@@ -4,7 +4,7 @@ import DashboardBase from '../../DashboardBase';
 import Battery from '../Battery';
 import CameraView from '../CameraView';
 import Field from '../Field';
-import Status from '../Status'
+import StatusChecks from '../StatusChecks';
 
 const DriverView = (props) => {
     return <DashboardBase leftWidth = {40} middleWidth = {0} rightWidth = {60}
@@ -24,33 +24,16 @@ const DriverView = (props) => {
             >
             </div>
             {/* <CameraView cameraName="The Camera" cameraURL="google.com"/> */}
-            <div className = 'flexbox row'>
-                <div className='flexbox column' 
-                    style={{
-                        background: 'white',
-                        borderRadius: '15px',
-                        padding: '5px',
-                        width: '50%'
-                    }}
-                >
-                    <div className='flexbox row'>
-                        <Status subsystem='Module 0' connected={props.dataMap.get('Module0')}/>
-                        <Status subsystem='Module 1' connected={props.dataMap.get('Module1')}/>
-                    </div>
-                    <div className='flexbox row'>
-                        <Status subsystem='Module 2' connected={props.dataMap.get('Module2')}/>
-                        <Status subsystem='Module 3' connected={props.dataMap.get('Module3')}/>
-                    </div>
-                </div>
-                <div style={{
-                        background: 'white',
-                        borderRadius: '15px',
-                        padding: '5px',
-                        width: '25%'
-                    }}>
-                    <Status subsystem='Intake' connected={props.dataMap.get('Intake')}></Status>
-                </div>
-            </div>
+            <StatusChecks 
+                mod0 = {props.dataMap.get('Module0')}
+                mod1 = {props.dataMap.get('Module1')}
+                mod2 = {props.dataMap.get('Module2')}
+                mod3 = {props.dataMap.get('Module3')}
+
+                intake = {props.dataMap.get('Intake')}
+                climber = {props.dataMap.get('Climber')}
+                shooter = {props.dataMap.get('shooter')}
+            />
             </>
         }
         middle = {
