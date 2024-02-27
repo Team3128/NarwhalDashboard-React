@@ -76,7 +76,7 @@ function BatteryMatchTime({voltage = 0, matchTime = 0}) {
         else if(matchTime <= 20 && matchState == RobotStates.TELEOP) {
             setMatchState(RobotStates.ENDGAME);
         }
-        else if(matchTime <= 135 && matchState == RobotStates.AUTO) {
+        else if(matchTime <= 135 && matchState == RobotStates.DISABLED) {
             setMatchState(RobotStates.TELEOP);
         }
     
