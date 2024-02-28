@@ -1,5 +1,5 @@
 .Green {
-    background-color: green;
+    background-color: rgb(118, 207, 17);
     width: 100%;
     height: 50px;
     border-top-right-radius: 12px;
@@ -7,7 +7,7 @@
 }
 
 .Red {
-    background-color: red;
+    background-color: rgb(238, 51, 123);
     width: 100%;
     height: 50px;
     border-top-right-radius: 12px;
@@ -15,7 +15,7 @@
 }
 
 .Yellow {
-    background-color: yellow;
+    background-color: rgb(255, 157, 65);
     width: 100%;
     height: 50px;
     border-top-right-radius: 12px;
@@ -25,7 +25,7 @@
 
 @keyframes blinker {
     50% {
-        background-color: red;
+        background-color: rgb(238, 51, 123);
     }
 }
 
@@ -92,13 +92,13 @@ button:active {
 }
 
 button.dark-mode {
-    background-color: red;
+    background-color: rgb(121, 12, 12);
 }
 
 button.dark-mode:hover {
-    background-color: #872341;
+    background-color: rgb(55, 4, 19);
 }
 
 button.dark-mode:active {
-    background-color: #4e1f2d;
+    background-color: #7e1b39;
 }

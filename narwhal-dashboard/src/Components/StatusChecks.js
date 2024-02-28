@@ -7,13 +7,13 @@ import {useEffect, useState} from 'react';
 
 function StatusChecks(props) {
     return <>
-        <div className = 'flexbox row'>
-                <div className='flexbox column' 
+        <div className = 'flexbox' style = {{alignItems: 'flex-start'}}>
+                <div className='flexbox column status_Box' 
                     style={{
-                        background: 'white',
                         borderRadius: '15px',
                         padding: '5px',
-                        width: '50%'
+                        marginRight: '15px',
+                        width: '45%'
                     }}
                 >
                     <div className='flexbox row'>
@@ -25,11 +25,11 @@ function StatusChecks(props) {
                         <Status subsystem='Module 3' connected={props.mod3}/>
                     </div>
                 </div>
-                <div style={{
-                        background: 'white',
+                <div className = 'status_Box' style={{
+                        width: '45%',
                         borderRadius: '15px',
                         padding: '5px',
-                        width: '25%'
+                        display: 'flex',
                     }}>
                     <Status subsystem='Intake' connected={props.intake}></Status>
                     <Status subsystem='Shooter' connected={props.shooter}></Status>

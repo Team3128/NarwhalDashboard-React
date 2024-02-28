@@ -32,7 +32,7 @@ const DriverView = (props) => {
 
                 intake = {props.dataMap.get('Intake')}
                 climber = {props.dataMap.get('Climber')}
-                shooter = {props.dataMap.get('shooter')}
+                shooter = {props.dataMap.get('Shooter')}
             />
             </>
         }
