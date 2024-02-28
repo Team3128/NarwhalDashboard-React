@@ -34,23 +34,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color:#e3e3e3;
-    border-radius: 12px;
-    margin: 20px;
-    width: 100%;
-    height: 50%;
+    height: 93%;
+    margin-bottom: 20px;
 }
 
-.side {
-    margin: auto 0;
+#system-checks{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+}
+
+.system-set{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .debug.dark-mode {
-    background-color: #282828;
 }
 
 .sub {
@@ -59,14 +58,11 @@
 }
 
 .display {
-    height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
 Button {
-    margin-top: 5px;
     border-color: transparent;
     color: white;
     overflow: hidden;
@@ -101,4 +97,13 @@ button.dark-mode:hover {
 
 button.dark-mode:active {
     background-color: #7e1b39;
+}
+
+#sub-img{
+    overflow: hidden;
+    width: 100%; /* Make the image width fill the container */
+    height: 75%; /* Maintain aspect ratio */
+    top: 0;
+    left: 0;
+    margin:0;
 }

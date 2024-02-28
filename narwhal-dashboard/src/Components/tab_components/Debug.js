@@ -12,20 +12,14 @@ import Subsystem from '../Subsystem';
  * socket: The websocket connection in App.js
  */
 const Debug = (props) => {
-    return <DashboardBase leftWidth = {45} middleWidth = {10} rightWidth = {45}
+    return <DashboardBase leftWidth = {100} middleWidth = {0} rightWidth = {0}
         left = {
             <>
-            <div className='side'>
+            <div id="system-checks">
                 <Subsystem socket = {props.socket} name = {"Intake"} testResult = {props.testResult}/>
                 <Subsystem socket = {props.socket} name = {"Shooter"} testResult = {props.testResult}/>
-            </div>
-            </>
-        }
-        right = {
-            <>
-            <div className='side'>
-                <Subsystem socket = {props.socket} name = {"Manipulator"} testResult = {props.testResult}/>
-                <Subsystem socket = {props.socket} name = {"Elevator"} testResult = {props.testResult}/>
+                <Subsystem socket = {props.socket} name = {"Climber"} testResult = {props.testResult}/>
+                <Subsystem socket = {props.socket} name = {"Robot"} testResult = {props.testResult}/>
             </div>
             </>
         }

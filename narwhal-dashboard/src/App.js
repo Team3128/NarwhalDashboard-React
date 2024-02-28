@@ -35,9 +35,6 @@ function App() {
     //This state stores the socket
     const [socket, setSocket] = useState(null);
 
-    //This state stores whether Dark Mode is enabled
-    const [darkMode, setDarkMode] = useState(false);
-
     //This state stores whether or not the socket is currently connected
     const [socketConnected, setSocketConnected] = useState(false);
 
@@ -58,9 +55,6 @@ function App() {
     const handleTabDebug = () => {
         setActiveTab("debug")
     }
-    const toggleDarkMode = ()=>{
-        setDarkMode(!darkMode);
-    }
 
     const connectToRobot = () => {
         //Connect to the web socket
@@ -73,16 +67,6 @@ function App() {
         }
     }
 
-    useEffect(()=>{
-        const elems = document.body.getElementsByTagName("*");
-        for (let i = 0; i < elems.length; i++) {
-            if (darkMode) elems[i].classList.add('dark-mode');
-            else elems[i].classList.remove('dark-mode');
-        }
-
-        if (darkMode) document.body.classList.add('dark-mode');
-        else document.body.classList.remove('dark-mode');
-    }, [darkMode, activeTab]);
 
     useEffect(() => {
 
@@ -125,7 +109,7 @@ function App() {
     }, [jsonData]);
     return (
         <div id = "base">
-            <Header connect={connectToRobot} disconnect={disconnectFromRobot} connectionStatus={socketConnected}/>
+            <Header connect={connectToRobot} disconnect={disconnectFromRobot} connectionStatus={socketConnected} activeTab={activeTab}/>
 
             {!socketConnected && <div id="cover" className="cover"></div>}
 
@@ -137,11 +121,6 @@ function App() {
             
             {(activeTab === "debug") && <Debug socket = {socket} testResult = {dataMap}/>}
 
-            <div id = "toggle">
-                <input type="checkbox" id="darkmode-toggle" onChange={toggleDarkMode}/>
-                <label for="darkmode-toggle">
-                </label>
-            </div>
             </div>
     );
 
