@@ -30,9 +30,9 @@ const DriverView = (props) => {
                 mod2 = {props.dataMap.get('Module2')}
                 mod3 = {props.dataMap.get('Module3')}
 
-                intake = {props.dataMap.get('Intake')}
-                climber = {props.dataMap.get('Climber')}
-                shooter = {props.dataMap.get('Shooter')}
+                intake = {props.dataMap.get('IntakeState')}
+                climber = {props.dataMap.get('ClimberState')}
+                shooter = {props.dataMap.get('ShooterState')}
             />
             </>
         }
