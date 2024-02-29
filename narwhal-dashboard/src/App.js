@@ -106,6 +106,7 @@ function App() {
             }
             dataMap.set(item, jsonData[item])
         }
+        // console.log(jsonData);
     }, [jsonData]);
     return (
         <div id = "base">
