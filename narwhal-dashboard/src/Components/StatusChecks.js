@@ -25,15 +25,21 @@ function StatusChecks(props) {
                         <Status subsystem='Module 3' connected={props.mod3}/>
                     </div>
                 </div>
-                <div className = 'status_Box' style={{
+                <div className = 'flexbox column status_Box' style={{
                         width: '45%',
                         borderRadius: '15px',
                         padding: '5px',
                         display: 'flex',
                     }}>
-                    <Status subsystem='Intake' connected={props.intake}></Status>
-                    <Status subsystem='Shooter' connected={props.shooter}></Status>
-                    <Status subsystem='Climber' connected={props.climber}></Status>
+                        <div className='flexbox row'>
+                        <Status subsystem='Intake' connected={props.intake}></Status>
+                        <Status subsystem='Shooter' connected={props.shooter}></Status>
+                    </div>
+                    <div className='flexbox row'>
+                        <Status subsystem='Climber' connected={props.climber}></Status>
+                        <Status subsystem="Amp Mech" connected={props.amp}></Status>
+                    </div>
+                    
                 </div>
             </div>
     </>
