@@ -2,7 +2,6 @@ import React from 'react';
 
 import DashboardBase from '../../DashboardBase';
 import Battery from '../Battery';
-import CameraView from '../CameraView';
 import Field from '../Field';
 import StatusChecks from '../StatusChecks';
 
@@ -23,7 +22,6 @@ const DriverView = (props) => {
                 }}
             >
             </div>
-            {/* <CameraView cameraName="The Camera" cameraURL="google.com"/> */}
             <StatusChecks 
                 mod0 = {props.dataMap.get('Module0')}
                 mod1 = {props.dataMap.get('Module1')}

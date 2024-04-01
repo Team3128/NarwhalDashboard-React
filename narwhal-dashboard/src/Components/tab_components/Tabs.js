@@ -17,6 +17,10 @@ const Tabs = (props) => {
         setActiveTab("auto")
         props.auto();
     };
+    const handleTabVision = () => {
+        setActiveTab("vision")
+        props.vision();
+    };
     const handleTabDebug = () => {
         setActiveTab("debug")
         props.debug();
@@ -27,6 +31,7 @@ const Tabs = (props) => {
         <div className="flexRowTabs">
             <div onClick={handleTabDriverView} className = {"button sapphire " + (activeTab === "driverView" ? "active" : "")}>Driver's View</div>
             <div onClick={handleTabAuto} className = {"button sapphire " + (activeTab === "auto" ? "active" : "")}>Auto</div>
+            <div onClick={handleTabVision} className = {"button sapphire " + (activeTab === "auto" ? "active" : "")}>Vision</div>
             <div onClick={handleTabDebug} className = {"button sapphire " + (activeTab === "debug" ? "active" : "")}>Debug</div>
         </div>
         </>

@@ -8,6 +8,7 @@ import Tabs from "./Components/tab_components/Tabs";
 import DriverView from "./Components/tab_components/DriverView";
 import AutoSelect from "./Components/tab_components/AutoSelect";
 import Debug from "./Components/tab_components/Debug"
+import Vision from "./Components/tab_components/Vision"
 
 
 
@@ -54,6 +55,9 @@ function App() {
     };
     const handleTabDebug = () => {
         setActiveTab("debug")
+    }
+    const handleTabVision = () => {
+        setActiveTab("vision")
     }
 
     const connectToRobot = () => {
@@ -114,11 +118,13 @@ function App() {
 
             {!socketConnected && <div id="cover" className="cover"></div>}
 
-            <div><Tabs driverView = {handleTabDriverView} auto = {handleTabAuto} debug = {handleTabDebug}/></div>
+            <div><Tabs driverView = {handleTabDriverView} auto = {handleTabAuto} debug = {handleTabDebug} vision = {handleTabVision}/></div>
             
             {(activeTab === "driverView") && (<DriverView dataMap = {dataMap} socket = {socket}/>)}
 
             {(activeTab === "auto") && <AutoSelect  dataMap = {dataMap} socket = {socket}/>}
+
+            {(activeTab === "vision") && <Vision dataMap = {dataMap} socket = {socket}/>}
             
             {(activeTab === "debug") && <Debug socket = {socket} testResult = {dataMap}/>}
 
