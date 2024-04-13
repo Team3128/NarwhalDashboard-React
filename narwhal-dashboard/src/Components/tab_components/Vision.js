@@ -21,18 +21,16 @@ const Vision = (props) => {
         left = {
             <div class = "vision-holder"> 
                 <div id="vision-title"> CAMS </div>
-                <button className = "button"  id="camera-view" onClick={() => {handleCamChange("1", "Front Left")}}> Front Left </button>
-                <button className = "button"  id="camera-view" onClick={() => {handleCamChange("2", "Front Right")}}> Front Right </button>
-                <button className = "button"  id="camera-view" onClick={() => {handleCamChange("3", "Left")}}> Left </button>
-                <button className = "button"  id="camera-view" onClick={() => {handleCamChange("4", "Right")}}> Right </button>
-                <button className = "button"  id="camera-view" onClick={() => {handleCamChange("5", "LimeLight")}}> LimeLight </button>
+                <button className = "button"  id="camera-view" onClick={() => {handleCamChange("http://left.local:1184/stream.mjpg", "Front Left")}}> Front Left </button>
+                <button className = "button"  id="camera-view" onClick={() => {handleCamChange("http://right.local:1186/stream.mjpg", "Front Right")}}> Front Right </button>
+                <button className = "button"  id="camera-view" onClick={() => {handleCamChange("http://limelight-mason.local:5800", "LimeLight")}}> LimeLight </button>
                 <button className = "button"  id="camera-view" onClick={() => {handleCamChange("none", "No Cams")}}> No Cams </button>
             </div>
         }
         right = {
             <div class = "cam-feed">
                 <div id = "cam-title">{camName}</div>
-                <img src={camURL} id="active-feed"/>
+                {camURL != "none" && <img src={camURL} id="active-feed"/>}
             </div>
         }
         />
