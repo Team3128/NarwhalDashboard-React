@@ -15,7 +15,7 @@ const Field = (props) => {
     useEffect(()=>{ setTimeout(() => {
         const field = document.getElementById('field'); 
         if (field === null) return;
-        setPixelsPerMeter(field.width / 16.4846);
+        setPixelsPerMeter(field.height / 8.02);
         setFieldHeight(field.height);
         // console.log(fieldHeight - (props.robotY * pixelsPerMeter) + "px");
       }, [document.getElementById('field')]);
