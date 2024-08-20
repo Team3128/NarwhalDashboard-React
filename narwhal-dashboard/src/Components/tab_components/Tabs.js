@@ -25,6 +25,10 @@ const Tabs = (props) => {
         setActiveTab("debug")
         props.debug();
     }
+    const handleModuleThrottling = () => {
+        setActiveTab("module")
+        props.module();
+    }
 
     return (
         <>
@@ -33,6 +37,8 @@ const Tabs = (props) => {
             <div onClick={handleTabAuto} className = {"button sapphire " + (activeTab === "auto" ? "active" : "")}>Auto</div>
             <div onClick={handleTabVision} className = {"button sapphire " + (activeTab === "vision" ? "active" : "")}>Vision</div>
             <div onClick={handleTabDebug} className = {"button sapphire " + (activeTab === "debug" ? "active" : "")}>Debug</div>
+            <div onClick={handleModuleThrottling} className = {"button sapphire " + (activeTab === "module" ? "active" : "")}>Module Throttling</div>
+
         </div>
         </>
         
