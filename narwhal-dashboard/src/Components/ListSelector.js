@@ -1,7 +1,7 @@
 import './css/Backgrounds.css';
 
 //import useRef and useEffect from react
-import {useState} from 'react';
+import React, {useState} from 'react';
 
 import './css/BasicLayoutStyles.css';
 import './css/ListSelector.css';
