@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './css/Backgrounds.css';
 import './css/BasicLayoutStyles.css';
-import { send } from '../RobotConnection/SocketManager';
 import './css/AutoSelector.css';
 
 function Button(props) {
@@ -14,11 +13,8 @@ function Button(props) {
     }
   }, [state]);
 
-  const buttonClassName = state ? 'pressed' : 'released';
-
   return (
     <button
-      className={buttonClassName}
       onPointerDown={() => setState(true)}
       onPointerUp={() => setState(false)}
     >

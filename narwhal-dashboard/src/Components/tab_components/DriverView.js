@@ -2,16 +2,14 @@ import React from 'react';
 
 import DashboardBase from '../../DashboardBase';
 import Battery from '../Battery';
-import AutoSelector from '../AutoSelector';
-import CameraView from '../CameraView';
-import Button from '../Button';
 import Field from '../Field';
+import StatusChecks from '../StatusChecks';
 
 const DriverView = (props) => {
     return <DashboardBase leftWidth = {40} middleWidth = {0} rightWidth = {60}
         left = {
             <>
-            <Battery voltage = {props.dataMap.get("voltage").toFixed(2)} matchTime = {Number(props.dataMap.get("time")).toFixed(0)} robotState = {props.robotMatchState}/>
+            <Battery voltage = {props.dataMap.get("voltage").toFixed(2)} matchTime = {Number(props.dataMap.get("time")).toFixed(0)}/>
             <div
                 className="flexbox column"
                 style={{
@@ -24,7 +22,17 @@ const DriverView = (props) => {
                 }}
             >
             </div>
-            <CameraView cameraName="The Camera" cameraURL="google.com"/>
+            <StatusChecks 
+                mod0 = {props.dataMap.get('Module0')}
+                mod1 = {props.dataMap.get('Module1')}
+                mod2 = {props.dataMap.get('Module2')}
+                mod3 = {props.dataMap.get('Module3')}
+
+                intake = {props.dataMap.get('IntakeState')}
+                climber = {props.dataMap.get('ClimberState')}
+                shooter = {props.dataMap.get('ShooterState')}
+                amp = {props.dataMap.get('AmpMechanismState')}
+            />
             </>
         }
         middle = {
@@ -33,7 +41,7 @@ const DriverView = (props) => {
         }
         right = {
             <>
-                <Field />
+                <Field robotX = {props.dataMap.get("robotX")} robotY = {props.dataMap.get("robotY")} robotYaw = {props.dataMap.get("robotYaw")}/>
             </>
         }
         

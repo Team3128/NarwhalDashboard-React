@@ -6,14 +6,14 @@ import {useState} from 'react';
 
 import './css/BasicLayoutStyles.css';
 import ListSelector from './ListSelector';
-import {send} from '../RobotConnection/SocketManager';
 import './css/AutoSelector.css';
 
 function AutoSelector(props) {
-    const [selectedAuto, selectAuto] = useState(null);
+    const [selectedAuto, selectAuto] = useState(props.selectedAuto);
 
     return (
             <ListSelector
+                defaultSelected={selectedAuto}
                 itemType="Auto"
                 items={props.autoPrograms}
                 onSelectItem={(item) => {
@@ -21,7 +21,7 @@ function AutoSelector(props) {
                     selectAuto(item);
                 }}
                 //Image must be in the public folder to change on runtime
-                imageSrc = {selectedAuto != null ? process.env.PUBLIC_URL + "/auto_imgs/" + selectedAuto + '.png' : ""}
+                imageSrc = {selectedAuto != null ? process.env.PUBLIC_URL + "/auto_imgs/" + selectedAuto + '.gif' : ""}
             />
     );
 }

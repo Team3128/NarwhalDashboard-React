@@ -1,5 +1,4 @@
 import React from 'react';
-import {useState} from 'react';
 
 import Button from './Button';
 
@@ -17,16 +16,15 @@ import './css/Subsystem.css'
  */
 const Subsystem = (props) => {
     // PASS FAIL RUNNING
-    const [result, setResult] = useState(props.testResult.get(props.name));
-    console.log("result: " + result);
+    // console.log("result: " + result);
     // setResult("PASS");
     return <>
     <div className = "debug">
         <div className = "display">
-            <div className = {`displayBox ${result === "PASS" ? "Green" : (result === "FAIL" ? "Red" : "Yellow")}`}></div>
-            <img className = "displayBox sub" src = {process.env.PUBLIC_URL + "/" + props.name + '.png'}></img>
+            <div className = {`displayBox ${props.testResult.get(props.name) === "PASSED" ? "Green" : (props.testResult.get(props.name) === "FAILED" ? "Red" : "Yellow")}`}></div>
+            <img id = "sub-img" className = "displayBox sub" src = {process.env.PUBLIC_URL + "/subsystem_imgs/" + props.name + '.jpg'}></img>
+            <Button className="pacific dark-mode" socket = {props.socket} name = {props.name} display = {"Run " + props.name + " Test"}></Button>
         </div>
-        <Button className="pacific dark-mode" socket = {props.socket} name = {props.name} display = {"Run " + props.name + " Test"}></Button>
     </div>
     </>
 };

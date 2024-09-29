@@ -13,6 +13,12 @@
     font-size: 14pt;
 }
 
+.list_sel_full_list {
+    overflow-y: auto;
+    position: relative;
+    max-height: 500px;
+}
+
 .auto_options {
     display: flex;
     flex-direction: row;

@@ -1,5 +1,5 @@
 .Green {
-    background-color: lime;
+    background-color: rgb(118, 207, 17);
     width: 100%;
     height: 50px;
     border-top-right-radius: 12px;
@@ -7,7 +7,7 @@
 }
 
 .Red {
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     width: 100%;
     height: 50px;
     border-top-right-radius: 12px;
@@ -15,7 +15,7 @@
 }
 
 .Yellow {
-    background-color: yellow;
+    background-color: rgb(255, 157, 65);
     width: 100%;
     height: 50px;
     border-top-right-radius: 12px;
@@ -25,7 +25,7 @@
 
 @keyframes blinker {
     50% {
-        background-color: red;
+        background-color: rgb(238, 51, 123);
     }
 }
 
@@ -34,28 +34,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color:#e3e3e3;
-    border-radius: 12px;
+    height: 93%;
+    margin-bottom: 20px;
+}
+
+#system-checks{
+    display: flex;
+    flex-direction: row;
+}
+
+.system-set{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .debug.dark-mode {
-    background-color: #282828;
 }
 
 .sub {
-    width: 60%;
+    width: 30%;
     margin: auto;
 }
 
 .display {
-    height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
 Button {
-    margin-top: 5px;
     border-color: transparent;
     color: white;
     overflow: hidden;
@@ -68,18 +75,35 @@ Button {
     width: 100%;
 }
 
-button.pressed {
+button {
     background-color: #041340;
 }
 
-button.released {
+button:hover {
     background-color: #072682;
 }
 
-button.pressed.dark-mode {
-    background-color: red;
+button:active {
+    background-color: #0e40d4;
 }
 
-button.released.dark-mode {
-    background-color: #872341;
+button.dark-mode {
+    background-color: rgb(121, 12, 12);
+}
+
+button.dark-mode:hover {
+    background-color: rgb(55, 4, 19);
+}
+
+button.dark-mode:active {
+    background-color: #7e1b39;
+}
+
+#sub-img{
+    overflow: hidden;
+    width: 100%; /* Make the image width fill the container */
+    height: 75%; /* Maintain aspect ratio */
+    top: 0;
+    left: 0;
+    margin:0;
 }
