@@ -23,9 +23,11 @@ const Field = (props) => {
 
     return(
         <>
-            <img id = "field" src = {field}></img>
-            <p style ={{
-                marginTop: "400px"
+            <img id = "field" src = {field} style={{
+                display: 'inline-block'
+            }}></img>
+            <p style = {{
+                marginTop: fieldHeight + "px"
             }}>
                 ({props.robotX} m, {props.robotY} m, {props.robotYaw} deg)
             </p>
