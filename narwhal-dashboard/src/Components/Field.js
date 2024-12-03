@@ -24,6 +24,11 @@ const Field = (props) => {
     return(
         <>
             <img id = "field" src = {field}></img>
+            <p style ={{
+                marginTop: "400px"
+            }}>
+                ({props.robotX} m, {props.robotY} m, {props.robotYaw} deg)
+            </p>
             <img id = "robot" src = {robot} style = {{
                 position: "relative",
                 width: robotWidth * pixelsPerMeter + "px",
