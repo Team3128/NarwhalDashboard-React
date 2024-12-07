@@ -23,14 +23,7 @@ const Field = (props) => {
 
     return(
         <>
-            <img id = "field" src = {field} style={{
-                display: 'inline-block'
-            }}></img>
-            <p style = {{
-                marginTop: fieldHeight + "px"
-            }}>
-                ({props.robotX} m, {props.robotY} m, {props.robotYaw} deg)
-            </p>
+            <img id = "field" src = {field}></img>
             <img id = "robot" src = {robot} style = {{
                 position: "relative",
                 width: robotWidth * pixelsPerMeter + "px",
@@ -38,6 +31,11 @@ const Field = (props) => {
                 top: fieldHeight - ((props.robotY + robotWidth / 2) * pixelsPerMeter) + "px",
                 transform: "rotate(" + - props.robotYaw + "deg)"
             }}></img>
+            <p style = {{
+                marginTop: fieldHeight + "px"
+            }}>
+                ({props.robotX} m, {props.robotY} m, {props.robotYaw} deg)
+            </p>
         </>
     );
 }
